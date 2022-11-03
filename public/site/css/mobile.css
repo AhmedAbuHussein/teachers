@@ -1,0 +1,221 @@
+@media (min-width: 1500px) {}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 991px) {
+    .col,
+    .col-1,
+    .col-10,
+    .col-11,
+    .col-12,
+    .col-2,
+    .col-3,
+    .col-4,
+    .col-5,
+    .col-6,
+    .col-7,
+    .col-8,
+    .col-9,
+    .col-auto,
+    .col-lg,
+    .col-lg-1,
+    .col-lg-10,
+    .col-lg-11,
+    .col-lg-12,
+    .col-lg-2,
+    .col-lg-3,
+    .col-lg-4,
+    .col-lg-5,
+    .col-lg-6,
+    .col-lg-7,
+    .col-lg-8,
+    .col-lg-9,
+    .col-lg-auto,
+    .col-md,
+    .col-md-1,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-auto,
+    .col-sm,
+    .col-sm-1,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9,
+    .col-sm-auto,
+    .col-xl,
+    .col-xl-1,
+    .col-xl-10,
+    .col-xl-11,
+    .col-xl-12,
+    .col-xl-2,
+    .col-xl-3,
+    .col-xl-4,
+    .col-xl-5,
+    .col-xl-6,
+    .col-xl-7,
+    .col-xl-8,
+    .col-xl-9,
+    .col-xl-auto {
+        width: 100%;
+        max-width: 100%;
+        flex: auto;
+    }
+    .head-top .nav-head ul {
+        display: none;
+    }
+    .head-top .nav-head {
+        padding: 0;
+        justify-content: flex-end;
+    }
+    .item.res-menu {
+        display: block;
+        margin-inline-start: 0;
+    }
+    .logo img {
+        /* max-width: 100px; */
+    }
+    .head-top .nav-head .menu-right .btn span,
+    .user-h .user-btn span {
+        display: none;
+    }
+    .head-top .nav-head .menu-right .btn,
+    .user-h .user-btn {
+        height: 33px;
+        width: 33px;
+        min-width: auto;
+        padding: 0;
+        text-align: center;
+        line-height: 33px;
+        min-height: auto;
+        background: var(--main-color);
+        border-radius: 50%;
+        color: #fff;
+        border-radius: 5px;
+    }
+    .head-top .nav-head .menu-right .btn i,
+    .user-h .user-btn i {
+        margin: 0 !important;
+        font-size: 14px;
+        margin-inline-end: 0;
+        top: 0;
+    }
+    .user-h {
+        margin: 0 5px;
+    }
+    .head-top .nav-head .menu-right .lang {
+        font-size: 12px;
+        display: none;
+    }
+    .logo {
+        max-width: 200px;
+        margin: 0 0 20px;
+    }
+    header {
+        padding: 20px 0;
+    }
+    .slider-block,
+    .slider-block .row {
+        min-height: 400px;
+    }
+    .slider-block .text-slider h1 {
+        font-size: 25px;
+        padding: 10px;
+        line-height: 25px;
+        margin: 20px 0;
+    }
+    .slider-block .text-slider p,
+    .item3 .slider-block .text-slider p {
+        font-size: 13px;
+        max-height: 40px;
+    }
+    .btn-s {
+        margin: 20px 0 0;
+    }
+    .btn {
+        min-width: 125px;
+        font-size: 14px;
+        min-height: 42px;
+        padding: 10px;
+    }
+    .item2 .slider-block .text-slider {
+        max-width: 100%;
+    }
+    .item2 .text-slider h2 {
+        font-size: 40px;
+        line-height: 40px;
+        margin: 20px auto 0;
+        padding: 18px 0 10px;
+    }
+    .text-slider .btn.btn-white {
+        margin-top: 30px;
+        min-width: 140px;
+        min-height: 42px;
+        line-height: 24px;
+    }
+    .slider-block .text-slider {
+        padding: 50px 0;
+    }
+    .item .text-slider h4,
+    .item2 .text-slider h4,
+    .item3 .text-slider h4 {
+        font-size: 25px;
+        line-height: 25px;
+    }
+    .new-arrival {
+        padding: 30px 0;
+    }
+    .new-arrival .col-md-6,
+    .categories-h .col-md-6 {
+        max-width: 50%;
+    }
+    .title h3 {
+        font-size: 24px;
+    }
+    .cat-block {
+        height: 350px;
+    }
+    .footer-col h3 {
+        /* margin: 30px 0; */
+    }
+    .footer-col {
+        margin: 20px 0;
+    }
+    .footer-top {
+        padding: 30px 0;
+    }
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 767px) {}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {}
+
+@media (max-width: 390px) {}
+
+@media (max-width: 360px) {}

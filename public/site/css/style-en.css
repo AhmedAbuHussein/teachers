@@ -1,0 +1,89 @@
+body {
+    direction: ltr;
+}
+
+.slider-block,
+.slider-block .row {
+    direction: ltr;
+}
+
+.solu-block {
+    direction: ltr;
+}
+
+.mobile-menu .menu-backdrop {
+    right: auto;
+    left: 0;
+    -webkit-transform: translateX(-101%);
+    -ms-transform: translateX(-101%);
+    transform: translateX(-101%);
+}
+
+.mobile-menu {
+    right: auto;
+    left: 0;
+}
+
+.mobile-menu-visible .mobile-menu .menu-box {
+    right: auto;
+    left: 0;
+}
+
+.mobile-menu .menu-box {
+    right: auto;
+    left: -400px;
+}
+
+form {
+    direction: ltr;
+}
+
+.btn i.fas.fa-angle-left,
+.btn i.fa.fa-angle-left {
+    transform: scaleX(-1);
+}
+
+.nice-select:after {
+    left: auto;
+    right: 15px;
+}
+
+.serv-block .img-block .img .alret {
+    right: auto;
+    left: 0;
+}
+
+.breadcrumb .text-bread ul li a::after {
+    left: auto;
+    right: -12px;
+}
+
+.iti--allow-dropdown .iti__flag-container,
+.iti--separate-dial-code .iti__flag-container {
+    right: 0;
+    left: auto;
+}
+
+.iti__country-list {
+    right: 0;
+    left: auto;
+}
+
+.form-req .form-inner .form-group .agree-h span::after {
+    right: auto;
+    left: 0;
+}
+
+.tabs-content-profile .form-req .form-inner .form-group .toggle-password {
+    left: auto;
+    right: 0;
+}
+
+.multi-step-form .steps button::after {
+    left: auto;
+    right: -55%;
+}
+
+.pack-block .details-pack ul li::before {
+    content: "\f105";
+}
