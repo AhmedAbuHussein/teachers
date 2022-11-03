@@ -60,8 +60,71 @@ Route::group(['prefix'=> 'dashboard', 'as'=> 'dashboard.', 'middleware'=> ['auth
         Route::put('{user}/update', [App\Http\Controllers\Admin\UserController::class, 'update'])->name('update');
         Route::get('{user}/destroy', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('destroy');
     });
+
+    # Levels ROUTES
+    Route::group(['prefix'=> 'levels', 'as'=> 'levels.'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\LevelController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\LevelController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Admin\LevelController::class, 'store'])->name('store');
+        Route::get('{level}/edit', [App\Http\Controllers\Admin\LevelController::class, 'edit'])->name('edit');
+        Route::put('{level}/update', [App\Http\Controllers\Admin\LevelController::class, 'update'])->name('update');
+        Route::get('{level}/destroy', [App\Http\Controllers\Admin\LevelController::class, 'destroy'])->name('destroy');
+    });
+
+    # Courses ROUTES
+    Route::group(['prefix'=> 'courses', 'as'=> 'courses.'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\CourseController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\CourseController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Admin\CourseController::class, 'store'])->name('store');
+        Route::get('{course}/edit', [App\Http\Controllers\Admin\CourseController::class, 'edit'])->name('edit');
+        Route::put('{course}/update', [App\Http\Controllers\Admin\CourseController::class, 'update'])->name('update');
+        Route::get('{course}/destroy', [App\Http\Controllers\Admin\CourseController::class, 'destroy'])->name('destroy');
+    });
+
+    # Material ROUTES
+    Route::group(['prefix'=> 'materials', 'as'=> 'materials.'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\MaterialController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\MaterialController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Admin\MaterialController::class, 'store'])->name('store');
+        Route::get('{material}/edit', [App\Http\Controllers\Admin\MaterialController::class, 'edit'])->name('edit');
+        Route::put('{material}/update', [App\Http\Controllers\Admin\MaterialController::class, 'update'])->name('update');
+        Route::get('{material}/destroy', [App\Http\Controllers\Admin\MaterialController::class, 'destroy'])->name('destroy');
+    });
+
+    # Contacts ROUTES
+    Route::group(['prefix'=> 'contacts', 'as'=> 'contacts.'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\ContactController::class, 'index'])->name('index');
+        Route::get('{contact}/show', [App\Http\Controllers\Admin\ContactController::class, 'show'])->name('show');
+        Route::get('{contact}/destroy', [App\Http\Controllers\Admin\ContactController::class, 'destroy'])->name('destroy');
+    });
+
+
+    # payments ROUTES
+    Route::group(['prefix'=> 'payments', 'as'=> 'payments.'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('index');
+        Route::get('{payment}/show', [App\Http\Controllers\Admin\PaymentController::class, 'show'])->name('show');
+        Route::get('{payment}/destroy', [App\Http\Controllers\Admin\PaymentController::class, 'destroy'])->name('destroy');
+    });
+    
+    # Privacy ROUTES
+    Route::group(['prefix'=> 'privacy', 'as'=> 'privacy.'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\PrivacyController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\PrivacyController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Admin\PrivacyController::class, 'store'])->name('store');
+        Route::get('{privacy}/edit', [App\Http\Controllers\Admin\PrivacyController::class, 'edit'])->name('edit');
+        Route::put('{privacy}/update', [App\Http\Controllers\Admin\PrivacyController::class, 'update'])->name('update');
+        Route::get('{privacy}/destroy', [App\Http\Controllers\Admin\PrivacyController::class, 'destroy'])->name('destroy');
+    });
+
+    # Setting ROUTES
+    Route::group(['prefix'=> 'settings', 'as'=> 'settings.'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('index');
+        Route::post('/update', [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('update');
+    });
     
 });
+
+
 
 Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/about',[App\Http\Controllers\HomeController::class, 'about'])->name('about');

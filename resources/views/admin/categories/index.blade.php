@@ -34,7 +34,7 @@
                             <td>{{ $item->products_count }}</td>
                             <td>
                                 <a class="btn btn-success" href="{{ route('dashboard.categories.edit', $item->id) }}"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-danger confirm" href="{{ route('dashboard.categories.destroy', $item->id) }}"><i class="fa fa-trash"></i></ش>
+                                <a class="btn btn-danger confirm" href="{{ route('dashboard.categories.destroy', $item->id) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

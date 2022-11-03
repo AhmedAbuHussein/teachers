@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
 @section('title')
-المنتجات
+المستوي
 @endsection
 @section('breadcrumb')
-<li class="breadcrumb-item">المنتجات</li>
+<li class="breadcrumb-item">المستوي</li>
 @endsection
 
 @section('content')
@@ -12,17 +12,16 @@
 
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('dashboard.products.create') }}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> اضافة</a>
+            <a href="{{ route('dashboard.levels.create') }}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> اضافة</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>الاسم</th>
-                        <th>الكود</th>
-                        <th>السعر</th>
-                        <th>الصورة</th>
+                        <th>العنوان</th>
+                        <th>عدد الدورات</th>
+                        <th>تاريخ الانشاء</th>
                         <th>التحكم</th>
                     </tr>
                 </thead>
@@ -31,12 +30,11 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->title }}</td>
-                            <td>{{ $item->code }}</td>
-                            <td>{{ $item->discount_price ?? $item->price }}</td>
-                            <td><img class="table-custom-image" src="{{ $item->avatar }}" alt=""></td>
+                            <td>{{ $item->courses_count }}</td>
+                            <td>{{ $item->created_at->diffForHumans() }}</td>
                             <td>
-                                <a class="btn btn-success" href="{{ route('dashboard.products.edit', $item->id) }}"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-danger confirm" href="{{ route('dashboard.products.destroy', $item->id) }}"><i class="fa fa-trash"></i></a>
+                                <a class="btn btn-success" href="{{ route('dashboard.levels.edit', $item->id) }}"><i class="fa fa-edit"></i></a>
+                                <a class="btn btn-danger confirm" href="{{ route('dashboard.levels.destroy', $item->id) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

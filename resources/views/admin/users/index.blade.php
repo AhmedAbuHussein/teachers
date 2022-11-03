@@ -36,7 +36,7 @@
                             <td><img class="table-custom-image" src="{{ $item->avatar }}" alt=""></td>
                             <td>
                                 <a class="btn btn-success" href="{{ route('dashboard.users.edit', $item->id) }}"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-danger confirm" href="{{ route('dashboard.users.destroy', $item->id) }}"><i class="fa fa-trash"></i></ش>
+                                <a class="btn btn-danger confirm" href="{{ route('dashboard.users.destroy', $item->id) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

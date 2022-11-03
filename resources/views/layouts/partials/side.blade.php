@@ -45,49 +45,49 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.index') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.levels.index') }}" aria-expanded="false">
                         <i class="ti ti-list"></i>
                         <span class="hide-menu">المستوي</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.index') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.courses.index') }}" aria-expanded="false">
                         <i class="ti ti-book"></i>
                         <span class="hide-menu">المواد</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.index') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.materials.index') }}" aria-expanded="false">
                         <i class="ti ti-list-ol"></i>
                         <span class="hide-menu">الدروس</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.index') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.contacts.index') }}" aria-expanded="false">
                         <i class="ti ti-control-play"></i>
                         <span class="hide-menu">تواصل معنا</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.index') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.payments.index') }}" aria-expanded="false">
                         <i class="ti ti-money"></i>
                         <span class="hide-menu">عمليات الشراء</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.index') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.privacy.index') }}" aria-expanded="false">
                         <i class="ti ti-lock"></i>
                         <span class="hide-menu">سياسة الاستخدام</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.index') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.settings.index') }}" aria-expanded="false">
                         <i class="ti ti-settings"></i>
                         <span class="hide-menu">الاعدادات</span>
                     </a>

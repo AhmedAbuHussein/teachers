@@ -34,7 +34,7 @@
                             <td>{{ $item->is_active == '1' ? "نشط": 'غير نشط' }}</td>
                             <td>
                                 <a class="btn btn-success" href="{{ route('dashboard.posts.edit', $item->id) }}"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-danger confirm" href="{{ route('dashboard.posts.destroy', $item->id) }}"><i class="fa fa-trash"></i></ش>
+                                <a class="btn btn-danger confirm" href="{{ route('dashboard.posts.destroy', $item->id) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

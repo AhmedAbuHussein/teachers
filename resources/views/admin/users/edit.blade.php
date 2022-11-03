@@ -75,7 +75,7 @@
                     <select required name="role" id="role" class="form-control">
                         <option value="">اختار الدور</option>
                         <option {{ old('role', $user->role) == 'admin' ? 'selected': '' }} value="admin">مدير</option>
-                        <option {{ old('role', $user->role) == 'professor' ? 'selected': '' }} value="professor">غير نشط</option>
+                        <option {{ old('role', $user->role) == 'professor' ? 'selected': '' }} value="professor">دكتور</option>
                     </select>
                     @error('role')
                         <p class="m-0 text-danger">{{ $message }}</p>
