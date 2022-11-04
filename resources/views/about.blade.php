@@ -16,10 +16,9 @@
             <!-- Col -->
             <div class="col-md-6 col-sm-12">
                 <div class="text-about">
-                    <h3>من نحن</h3>
-                    <p>
-                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                    </p>
+                    <h3>{{ $about->about_title }}</h3>
+                    <p>{{ $about->short_desc }}</p>
+                    <p> {{ $about->about_text }}</p>
                 </div>
             </div>
             <!-- /Col -->
@@ -28,69 +27,17 @@
             <div class="col-md-6 col-sm-12">
                 <div class="img-about">
                     <div class="img">
-                        <img src="{{ asset('site/images/p3.png') }}" alt="#" />
+                        <img src="{{ $about->about_image ? Storage::url($about->about_image): asset('images/logo.png') }}" alt="#" />
                     </div>
                 </div>
             </div>
             <!-- /Col -->
         </div>
 
-        <div class="row">
-            <!-- Col -->
-            <div class="col-md-6 col-sm-12">
-                <div class="text-about">
-                    <h3>أهدافنا</h3>
-                    <p>
-                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                    </p>
-                    <ul>
-                        <li>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما</li>
-                        <li>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما</li>
-                        <li>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /Col -->
-
-            <!-- Col -->
-            <div class="col-md-6 col-sm-12">
-                <div class="img-about">
-                    <div class="img">
-                        <img src="{{ asset('site/images/p1.png') }}" alt="#" />
-                    </div>
-                </div>
-            </div>
-            <!-- /Col -->
-        </div>
+        
     </div>
 </section>
 
-<section class="about-more">
-    <div class="container">
-        <div class="row">
-            <!-- Col -->
-            <div class="col-md-6 col-sm-12">
-                <div class="about-block">
-                    <h3>رؤيتنا</h3>
-                    <p>
-                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                    </p>
-                </div>
-            </div>
-            <!-- /Col -->
-            <!-- Col -->
-            <div class="col-md-6 col-sm-12">
-                <div class="about-block">
-                    <h3>مهمتنا</h3>
-                    <p>
-                        هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                    </p>
-                </div>
-            </div>
-            <!-- /Col -->
-        </div>
-    </div>
-</section>
 
 <!-- Start Special-h -->
 <section class="special-h">
@@ -103,7 +50,7 @@
                         <i class="las la-award"></i>
                     </div>
                     <div class="details">
-                        <h3>ضمان 100 يوم خالٍ من المتاعب</h3>
+                        <h3>افضل المعلمين في انحاء الدولة</h3>
                     </div>
                 </div>
             </div>
@@ -115,7 +62,7 @@
                         <i class="las la-couch"></i>
                     </div>
                     <div class="details">
-                        <h3>لدينا أثاث مصنوع في المملكة العربية السعودية</h3>
+                        <h3>سهولة الحصول علي الخدمات للمعلمين</h3>
                     </div>
                 </div>
             </div>
@@ -127,7 +74,7 @@
                         <i class="las la-headset"></i>
                     </div>
                     <div class="details">
-                        <h3>أفضل خدمة عملاء في فئتها</h3>
+                        <h3>افضل خدمة تواصل</h3>
                     </div>
                 </div>
             </div>

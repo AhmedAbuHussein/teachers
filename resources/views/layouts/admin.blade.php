@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="developer" content="Ahmed Shaker">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -114,7 +113,6 @@
 <script src="{{ url('color/js/utils.js') }}"></script>
 
     @if (\Session::has('message'))
-
     <script>
         $(function() {
 
@@ -126,7 +124,6 @@
         })
         
     </script>
-        
     @endif
 
 

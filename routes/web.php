@@ -128,7 +128,10 @@ Route::group(['prefix'=> 'dashboard', 'as'=> 'dashboard.', 'middleware'=> ['auth
 
 Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/about',[App\Http\Controllers\HomeController::class, 'about'])->name('about');
+Route::get('/privacy',[App\Http\Controllers\HomeController::class, 'privacy'])->name('privacy');
+
 Route::get('/contact',[App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::post('/contact',[App\Http\Controllers\HomeController::class, 'contactstore']);
 
 Route::group(['middleware'=> ['auth']], function(){
     
@@ -136,7 +139,22 @@ Route::group(['middleware'=> ['auth']], function(){
         Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('index');
     });
 
+    Route::group(['prefix'=> "payments" , 'as'=> 'payments.'], function(){
+        Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+    });
+
     Route::group(['prefix'=> "products" , 'as'=> 'products.'], function(){
         Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
     });
+
+    Route::group(['prefix'=> "library" , 'as'=> 'library.'], function(){
+        Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+    });
+
+    Route::group(['prefix'=> "posts" , 'as'=> 'posts.'], function(){
+        Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+    });
+
+
+    
 });

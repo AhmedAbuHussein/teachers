@@ -41,6 +41,23 @@
     <script src="{{ asset('site/js/slick.min.js') }}"></script>
     <script src="{{ asset('site/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('site/js/java.js') }}"></script>
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
+
+
+    @if (\Session::has('message'))
+    <script>
+        $(function() {
+
+            swal({
+                title:"{{ \Session::get('title', 'اشعار') }}",
+                text:"{{ \Session::get('message') }}",
+                icon:"{{ \Session::get('icon') }}"
+            });
+
+        })
+        
+    </script>
+    @endif
 
 </body>
 </html>

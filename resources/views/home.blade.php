@@ -8,19 +8,15 @@
         <div class="item">
             <div class="slider-block">
                 <div class="img-slider">
-                    <img src="{{ asset('site/images/slider.jpg') }}" alt="#" />
+                    <img src="{{ asset('site/images/slider.jpg') }}" alt="" />
                 </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="text-slider">
-                                <h4>عنوان مختصر هنا</h4>
-                                <h1>
-                                    عنوان هنا
-                                </h1>
-                                <p>
-                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.
-                                </p>
+                                <h4>موقع دليلي</h4>
+                                <h1>دليل المعلم</h1>
+                                <p>{{ $setting->short_desc }}</p>
                             </div>
                         </div>
                     </div>
@@ -28,29 +24,6 @@
             </div>
         </div>
         <!-- /Item -->
-
-        <!-- Item -->
-        <div class="item item2">
-            <div class="slider-block">
-                <div class="img-slider">
-                    <img src="{{ asset('site/images/slider2.jpg') }}" alt="#" />
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="text-slider">
-                                <h4>عنوان مختصر هنا</h4>
-                                <h2>
-                                    عنوان هنا
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /Item -->
-
         <!-- Item -->
         <div class="item item2 item3">
             <div class="slider-block">
@@ -61,12 +34,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="text-slider">
-                                <h2>
-                                    عنوان هنا
-                                </h2>
-                                <p>
-                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
-                                </p>
+                                <h2>دليل المعلم</h2>
+                                <p>{{ $setting->short_desc }}</p>
                             </div>
                         </div>
                     </div>

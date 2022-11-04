@@ -30,24 +30,24 @@
                     <div class="footer-col">
                         <ul class="info-f">
                             <li>
-                                <a href="tel:056-7891-011">
+                                <a href="tel:{{ $setting->phone }}">
                                     <div class="icon">
                                         <i class="la la-phone"></i>
                                     </div>
                                     <div class="details">
                                         <span>اتصل بنا</span>
-                                        <h3>056-7891-011</h3>
+                                        <h3>{{ $setting->phone }}</h3>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="mailto:info@domain.com">
+                                <a href="mailto:{{ $setting->email }}">
                                     <div class="icon">
                                         <i class="la la-at"></i>
                                     </div>
                                     <div class="details">
                                         <span>Contact us</span>
-                                        <h3>info@domain.com</h3>
+                                        <h3>{{ $setting->email }}</h3>
                                     </div>
                                 </a>
                             </li>
@@ -61,21 +61,42 @@
                     <div class="footer-col">
                         <h3>حسابي</h3>
                         <ul>
+                            @guest
                             <li>
-                                <a href="#">
-                                    دخول / تسجيل
+                                <a href="{{ route('login') }}">
+                                   تسجيل الدخول
+                                </a>
+                            </li>   
+                            <li>
+                                <a href="{{ route('register') }}">
+                                   تسجيل جديد
+                                </a>
+                            </li>    
+                            @endguest
+                            @auth
+                            <li>
+                                <a href="{{ route('profile.index') }}">
+                                    الصفحة الشخصية
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    عربة التسوق
+                                <a href="{{ route('products.index') }}">
+                                   المنتجات
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    إعدادت الحساب
+                                <a href="{{ route('library.index') }}">
+                                   المكتبة
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                   تسجيل الخروج
+                                </a>
+                            </li>
+                            @endauth
+                           
                         </ul>
                     </div>
                 </div>

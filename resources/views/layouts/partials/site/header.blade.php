@@ -23,13 +23,28 @@
                                @auth
                                 <li class="{{ active('products.index') }}">
                                     <a href="{{ route('products.index') }}">
-                                            المنتجات
-                                        </a>
-                                    </li>
+                                        المنتجات
+                                    </a>
+                                </li>
+                                <li class="{{ active('library.index') }}">
+                                    <a href="{{ route('library.index') }}">
+                                        المكتبة
+                                    </a>
+                                </li>
+                                <li class="{{ active('posts.index') }}">
+                                    <a href="{{ route('posts.index') }}">
+                                        المناقشة
+                                    </a>
+                                </li>
                                 @endauth
                                 <li class="{{ active('about') }}">
                                     <a href="{{ route('about') }}">
                                         من نحن
+                                    </a>
+                                </li>
+                                <li class="{{ active('privacy') }}">
+                                    <a href="{{ route('privacy') }}">
+                                        سياسة الاستخدام
                                     </a>
                                 </li>
                                 <li class="{{ active('contact') }}">
@@ -43,26 +58,41 @@
                         <div class="nav-head">
                             <div class="menu-right">
                                 <div class="user-h">
-                                    <a class="user-btn">
-                                        <i class="fas fa-user"></i>
-                                        <span>حسابي</span>
-                                    </a>
-                                    <ul class="sub-menu">
+                                    @guest
+                                    <ul>
                                         <li>
-                                            <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                               تسجيل الخروج
+                                            <a href="{{ route('login') }}">
+                                                تسجيل الدخول
                                             </a>
-        
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </li>
-                                        <li>
-                                            <a href="#">البروفايل</a>
                                         </li>
                                     </ul>
+                                    @endguest
+                                    @auth
+                                        <a class="user-btn">
+                                            <i class="fas fa-user"></i>
+                                            <span>حسابي</span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            
+                                            <li>
+                                                <a href="{{ route('profile.index') }}">الصفحة الشخصية</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('payments.index') }}">المشتريات</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                تسجيل الخروج
+                                                </a>
+            
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    @endauth
                                 </div>
 
                                 <div class="item res-menu">
