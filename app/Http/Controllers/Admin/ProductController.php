@@ -87,6 +87,7 @@ class ProductController extends Controller
         for($i=1;$i<=3;$i++){
             if($request->hasFile("image$i")){
                 $old = $product->{"image$i"};
+                
                 if($old){
                     Storage::delete($old);
                 }

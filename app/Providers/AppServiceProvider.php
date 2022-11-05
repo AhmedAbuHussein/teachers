@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Setting;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        Paginator::useBootstrap();
         view()->composer(['layouts.partials.site.footer', 'home'], function($view) {
             $setting = Setting::first();
             $view->with(['setting'=> $setting]);

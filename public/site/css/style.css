@@ -293,6 +293,7 @@ select {
     background: transparent;
     border-bottom: 1px solid #707070;
     padding: 0 20px;
+    min-width: 250px;
 }
 
 .nice-select:hover {
@@ -1750,7 +1751,9 @@ header {
 }
 
 .pro-block .img-block .img {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     line-height: 164px;
@@ -4580,3 +4583,76 @@ button.btn.btn-form {
 
 
 /* End Profile-page */
+
+
+/* Start Library-page */
+
+.sidebar-library .head-side {
+    width: 100%;
+    background: var(--main-color);
+    padding: 15px;
+}
+
+.sidebar-library .head-side h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.sidebar-library .nav.nav-tabs {
+    border: 1px dashed #cccccc;
+}
+
+.sidebar-library .nav.nav-tabs .nav-item {
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar-library .nav.nav-tabs .nav-item .nav-link {
+    display: block;
+    width: 100%;
+    text-align: start;
+    background: transparent;
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px dashed #cccccc;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    color: #797979;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.sidebar-library .nav.nav-tabs .nav-item .nav-link.active {
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+.details-shapter .title {
+    margin: 30px 0;
+}
+
+.details-shapter p {
+    font-size: 18px;
+    line-height: 2;
+    margin: 20px 0;
+}
+
+.about-page.body-inner .tab-content .tab-pane {
+    padding: 0;
+}
+
+.privacy-page .row {
+    justify-content: center;
+}
+
+.privacy-page .text-about h3 {
+    margin: 30px 0;
+}
+
+
+/* End Library-page */

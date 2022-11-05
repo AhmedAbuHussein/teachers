@@ -47,6 +47,7 @@
 </section>
 <!-- End Slider-h -->
 
+
 <!-- Start New-arrival -->
 <section class="new-arrival">
     <div class="container">
@@ -54,7 +55,7 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="title">
-                    <h3>احدث المنتجات</h3>
+                    <h3>المنتجات</h3>
                 </div>
             </div>
             <!-- /Col -->
@@ -62,7 +63,7 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="more-products">
-                    <a href="#">
+                    <a href="{{ route('products.index') }}">
                         عرض المزيد
                         <i class="la la-angle-left"></i>
                     </a>
@@ -73,222 +74,40 @@
             <!-- Col -->
             <div class="col-md-12">
                 <div class="all-pro row">
+                    @forelse ($products as $item)
                     <!-- Col -->
                     <div class="col-md-3 col-sm-6">
                         <div class="pro-block">
                             <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p1.png') }}" />
+                                <a href="{{ route('products.show', $item->id) }}" class="img">
+                                    <img src="{{ $item->avatar }}" />
                                 </a>
                             </div>
                             <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
+                                <a href="{{ route('products.show', $item->id) }}" class="name">
+                                    {{ $item->title }}
                                 </a>
                                 <div class="price-h">
                                     <span class="new-price">
-                                        219.50 <u>SAR</u>
+                                       {{ $item->discount_price ? $item->discount_price : $item->price }} <u>د.ك</u>
                                     </span>
                                     <span class="old-price">
-                                        250.00
+                                        {{ $item->price }}
                                     </span>
                                 </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
+                                <a href="{{ route('products.show', $item->id) }}" class="btn-add-cart">
+                                   عرض
                                 </a>
                             </div>
                         </div>
                     </div>
                     <!-- /Col -->
-                    <!-- Col -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p1.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
+                    @empty
+                    <div class="col-12">
+                        <p class="text-center">لا يوجد بيانات لعرضها 💁‍♀️💁‍♀️💁‍♀️</p>
                     </div>
-                    <!-- /Col -->
-                    <!-- Col -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p2.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Col -->
-                    <!-- Col -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p3.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Col -->
-                    <!-- Col -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p4.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Col -->
-                    <!-- Col -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p2.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Col -->
-                    <!-- Col -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p3.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Col -->
-                    <!-- Col -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p4.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Col -->
+                    @endforelse
+                   
                 </div>
             </div>
             <!-- /Col -->
@@ -296,6 +115,75 @@
     </div>
 </section>
 <!-- End New-arrival -->
+
+
+<!-- Start New-arrival -->
+<section class="new-arrival">
+    <div class="container">
+        <div class="row">
+            <!-- Col -->
+            <div class="col-md-6">
+                <div class="title">
+                    <h3>المكتبة</h3>
+                </div>
+            </div>
+            <!-- /Col -->
+
+            <!-- Col -->
+            <div class="col-md-6">
+                <div class="more-products">
+                    <a href="{{ route('library.index') }}">
+                        عرض المزيد
+                        <i class="la la-angle-left"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- /Col -->
+
+           
+            <!-- Col -->
+            <div class="col-md-12">
+                <div class="best-slider owl-carousel owl-theme">
+                    @forelse ($courses as $course)
+                        <!-- Item -->
+                        <div class="item">
+                            <div class="pro-block">
+                                <div class="img-block">
+                                    <a href="{{ route('library.courses.show', ['level'=> $course->level_id,'course'=>$course->id]) }}" class="img">
+                                        <img src="{{ $course->avatar }}" />
+                                    </a>
+                                </div>
+                                <div class="details">
+                                    <a href="{{ route('library.courses.show', ['level'=> $course->level_id,'course'=>$course->id]) }}" class="name">
+                                        {{ $course->title }}
+                                    </a>
+                                    <div class="price-h">
+                                        <span class="new-price">
+                                        رقم الكورس {{ $course->code }}
+                                        </span>
+                                    </div>
+                                    <a href="{{ route('library.courses.show', ['level'=> $course->level_id,'course'=>$course->id]) }}" class="btn-add-cart">
+                                       عرض
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Item -->
+                    @empty
+                        <div class="col-12">
+                            <p class="text-center">لا يوجد بيانات لعرضها 💁‍♀️💁‍♀️💁‍♀️</p>
+                        </div>
+                    @endforelse
+                    
+                </div>
+            </div>
+            <!-- /Col -->
+        </div>
+    </div>
+</section>
+<!-- End New-arrival -->
+
+
 
 <!-- Start Categories-h -->
 <section class="categories-h">
@@ -312,68 +200,34 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="more-products">
-                    <a href="#">
-                        عرض المزيد
-                        <i class="la la-angle-left"></i>
-                    </a>
+                   
                 </div>
             </div>
             <!-- /Col -->
 
+            @forelse ($categories as $item)
             <!-- Col -->
             <div class="col-md-4 col-sm-12">
                 <div class="cat-block">
                     <div class="img">
-                        <a href="#">
-                            <img src="{{ asset('site/images/s1.png') }}" />
+                        <a href="{{ route('products.index', ['category'=> $item->id]) }}">
+                            <img src="{{ $item->avatar }}" />
                         </a>
                     </div>
                     <div class="details">
-                        <h3>اسم القسم</h3>
-                        <p>
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
-                        </p>
-                        <a href="#" class="btn-shop">تسوق الان</a>
+                        <h3>{{ $item->title }}</h3>
+                        <p>{{ $item->text }} </p>
+                        <a href="{{ route('products.index', ['category'=> $item->id]) }}" class="btn-shop">تسوق الان</a>
                     </div>
                 </div>
             </div>
             <!-- /Col -->
-            <!-- Col -->
-            <div class="col-md-4 col-sm-12">
-                <div class="cat-block">
-                    <div class="img">
-                        <a href="#">
-                            <img src="{{ asset('site/images/s2.png') }}" />
-                        </a>
-                    </div>
-                    <div class="details">
-                        <h3>اسم القسم</h3>
-                        <p>
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
-                        </p>
-                        <a href="#" class="btn-shop">تسوق الان</a>
-                    </div>
-                </div>
+            @empty
+            <div class="col-12">
+                <p class="text-center">لا يوجد بيانات لعرضها 💁‍♀️💁‍♀️💁‍♀️</p>
             </div>
-            <!-- /Col -->
-            <!-- Col -->
-            <div class="col-md-4 col-sm-12">
-                <div class="cat-block">
-                    <div class="img">
-                        <a href="#">
-                            <img src="{{ asset('site/images/s3.png') }}" />
-                        </a>
-                    </div>
-                    <div class="details">
-                        <h3>اسم القسم</h3>
-                        <p>
-                            هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
-                        </p>
-                        <a href="#" class="btn-shop">تسوق الان</a>
-                    </div>
-                </div>
-            </div>
-            <!-- /Col -->
+            @endforelse
+
         </div>
     </div>
 </section>
@@ -386,7 +240,7 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="title">
-                    <h3>مضاف حديثا</h3>
+                    <h3>المميزه</h3>
                 </div>
             </div>
             <!-- /Col -->
@@ -394,7 +248,7 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="more-products">
-                    <a href="#">
+                    <a href="{{ route('products.index') }}">
                         عرض المزيد
                         <i class="la la-angle-left"></i>
                     </a>
@@ -402,148 +256,44 @@
             </div>
             <!-- /Col -->
 
+           
             <!-- Col -->
             <div class="col-md-12">
                 <div class="best-slider owl-carousel owl-theme">
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p1.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
+                    @forelse ($features as $item)
+                        <!-- Item -->
+                        <div class="item">
+                            <div class="pro-block">
+                                <div class="img-block">
+                                    <a href="{{ route('products.show', $item->id) }}" class="img">
+                                        <img src="{{ $item->avatar }}" />
+                                    </a>
                                 </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
+                                <div class="details">
+                                    <a href="{{ route('products.show', $item->id) }}" class="name">
+                                        {{ $item->title }}
+                                    </a>
+                                    <div class="price-h">
+                                        <span class="new-price">
+                                           {{ $item->discount_price ? $item->discount_price : $item->price }} <u>د.ك</u>
+                                        </span>
+                                        <span class="old-price">
+                                            {{ $item->price }}
+                                        </span>
+                                    </div>
+                                    <a href="{{ route('products.show', $item->id) }}" class="btn-add-cart">
+                                       عرض
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /Item -->
-
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p2.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
+                        <!-- /Item -->
+                    @empty
+                        <div class="col-12">
+                            <p class="text-center">لا يوجد بيانات لعرضها 💁‍♀️💁‍♀️💁‍♀️</p>
                         </div>
-                    </div>
-                    <!-- /Item -->
-
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p3.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Item -->
-
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p4.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Item -->
-
-                    <!-- Item -->
-                    <div class="item">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="#" class="img">
-                                    <img src="{{ asset('site/images/p2.png') }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="#" class="name">
-                                    اسم المنتج
-                                </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                        219.50 <u>SAR</u>
-                                    </span>
-                                    <span class="old-price">
-                                        250.00
-                                    </span>
-                                </div>
-                                <a href="#" class="btn-add-cart">
-                                    اضافة للسلة
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Item -->
+                    @endforelse
+                    
                 </div>
             </div>
             <!-- /Col -->

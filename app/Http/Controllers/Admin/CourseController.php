@@ -70,7 +70,7 @@ class CourseController extends Controller
         if($request->hasFile('image')){
             $old = $course->image;
             if($old){
-                Storage::delete($old->image);
+                Storage::delete($old);
             }
             $name = "course_" . time(). "_". Str::random() . ".". $request->file('image')->getClientOriginalExtension();
             Storage::putFileAs("images/", $request->file('image'), $name);

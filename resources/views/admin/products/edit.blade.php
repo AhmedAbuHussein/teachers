@@ -14,6 +14,7 @@
 <div class="container-fluid">
     <form action="{{ route('dashboard.products.update', $product->id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
             <div class="col-md-6">
                 
@@ -35,7 +36,7 @@
 
                 <div class="form-group">
                     <label for="price">سعر المنتج</label>
-                    <input type="number" min="1" required name="price" id="price" value="{{ old('price', $product->price) }}" class="form-control" placeholder="سعر المنتج">
+                    <input type="number" step="0.1" min="1" required name="price" id="price" value="{{ old('price', $product->price) }}" class="form-control" placeholder="سعر المنتج">
                     @error('price')
                         <p class="m-0 text-danger">{{ $message }}</p>
                     @enderror
@@ -43,7 +44,7 @@
 
                 <div class="form-group">
                     <label for="discount_price">سعر المنتج بعد الخصم</label>
-                    <input type="number" min="0" name="discount_price" id="discount_price" value="{{ old('discount_price', $product->discount_price) }}" class="form-control" placeholder="سعر المنتج بعد الخصم">
+                    <input type="number" step="0.1" min="0" name="discount_price" id="discount_price" value="{{ old('discount_price', $product->discount_price) }}" class="form-control" placeholder="سعر المنتج بعد الخصم">
                     @error('discount_price')
                         <p class="m-0 text-danger">{{ $message }}</p>
                     @enderror

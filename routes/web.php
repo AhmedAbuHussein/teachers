@@ -140,16 +140,26 @@ Route::group(['middleware'=> ['auth']], function(){
     });
 
     Route::group(['prefix'=> "payments" , 'as'=> 'payments.'], function(){
-        Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+        Route::get('/',[App\Http\Controllers\PaymentController::class, 'index'])->name('index');
+        Route::get('{product}/buy',[App\Http\Controllers\PaymentController::class, 'buy'])->name('buy');
+        Route::post('{product}/buy',[App\Http\Controllers\PaymentController::class, 'checkout']);
     });
 
     Route::group(['prefix'=> "products" , 'as'=> 'products.'], function(){
         Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+        Route::get('{product}/show',[App\Http\Controllers\ProductController::class, 'show'])->name('show');
     });
 
     Route::group(['prefix'=> "library" , 'as'=> 'library.'], function(){
         Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+
+        Route::group(['prefix'=> "{level}/courses" , 'as'=> 'courses.'], function(){
+            Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+            Route::get('{course}/show',[App\Http\Controllers\ProductController::class, 'show'])->name('show');
+        });
     });
+
+    
 
     Route::group(['prefix'=> "posts" , 'as'=> 'posts.'], function(){
         Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
