@@ -101,6 +101,7 @@
         }
     </style>
 @endsection
+
 @section('script')
     <script>
         function handleInputs(val){

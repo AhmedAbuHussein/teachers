@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         view()->composer(['layouts.partials.site.footer', 'home'], function($view) {
-            $setting = Setting::first();
+            $setting = Setting::firstOrCreate([]);
             $view->with(['setting'=> $setting]);
         });
         

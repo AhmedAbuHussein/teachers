@@ -42,7 +42,7 @@
     <script src="{{ asset('site/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('site/js/java.js') }}"></script>
     <script src="{{ asset('js/sweetalert.js') }}"></script>
-
+    @yield('script')
 
     @if (\Session::has('message'))
     <script>

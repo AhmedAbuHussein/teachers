@@ -162,7 +162,8 @@ Route::group(['middleware'=> ['auth']], function(){
     
 
     Route::group(['prefix'=> "posts" , 'as'=> 'posts.'], function(){
-        Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+        Route::get('/',[App\Http\Controllers\PostController::class, 'index'])->name('index');
+        Route::post('/store',[App\Http\Controllers\PostController::class, 'store'])->name('store');
     });
 
 
