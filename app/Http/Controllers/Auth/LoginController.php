@@ -51,6 +51,6 @@ class LoginController extends Controller
         if($user->role == "admin"){
             return redirect()->route('dashboard.index');
         }
-        return redirect()->route('home');
+        return redirect()->route('index');
     }
 }

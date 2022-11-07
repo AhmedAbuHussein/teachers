@@ -137,12 +137,9 @@ Route::group(['middleware'=> ['auth']], function(){
     
     Route::group(['prefix'=> "profile" , 'as'=> 'profile.'], function(){
         Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('index');
-    });
-
-    Route::group(['prefix'=> "payments" , 'as'=> 'payments.'], function(){
-        Route::get('/',[App\Http\Controllers\PaymentController::class, 'index'])->name('index');
-        Route::get('{product}/buy',[App\Http\Controllers\PaymentController::class, 'buy'])->name('buy');
-        Route::post('{product}/buy',[App\Http\Controllers\PaymentController::class, 'checkout']);
+        Route::post('update', [App\Http\Controllers\ProfileController::class, 'update'])->name('update');
+        Route::post('image', [App\Http\Controllers\ProfileController::class, 'upload'])->name('image');
+        Route::post('password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('password');
     });
 
     Route::group(['prefix'=> "products" , 'as'=> 'products.'], function(){
@@ -150,21 +147,43 @@ Route::group(['middleware'=> ['auth']], function(){
         Route::get('{product}/show',[App\Http\Controllers\ProductController::class, 'show'])->name('show');
     });
 
-    Route::group(['prefix'=> "library" , 'as'=> 'library.'], function(){
-        Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
-
-        Route::group(['prefix'=> "{level}/courses" , 'as'=> 'courses.'], function(){
-            Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
-            Route::get('{course}/show',[App\Http\Controllers\ProductController::class, 'show'])->name('show');
+    Route::group(['middleware'=> 'active'], function(){
+        
+        Route::group(['prefix'=> "payments" , 'as'=> 'payments.'], function(){
+            Route::get('/',[App\Http\Controllers\PaymentController::class, 'index'])->name('index');
+            Route::get('{product}/buy',[App\Http\Controllers\PaymentController::class, 'buy'])->name('buy');
+            Route::post('{product}/buy',[App\Http\Controllers\PaymentController::class, 'checkout']);
         });
-    });
 
+
+        Route::group(['prefix'=> "library" , 'as'=> 'library.'], function(){
+            Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
     
+            Route::group(['prefix'=> "{level}/courses" , 'as'=> 'courses.'], function(){
+                Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
+                Route::get('{course}/show',[App\Http\Controllers\ProductController::class, 'show'])->name('show');
+            });
+        });
+    
+        
+    
+        Route::group(['prefix'=> "posts" , 'as'=> 'posts.'], function(){
+            Route::get('/',[App\Http\Controllers\PostController::class, 'index'])->name('index');
+            Route::get('{post}/show',[App\Http\Controllers\PostController::class, 'show'])->name('show');
+            Route::post('/store',[App\Http\Controllers\PostController::class, 'store'])->name('store');
+            Route::delete('{post}/destroy',[App\Http\Controllers\PostController::class, 'destroy'])->name('destroy');
+    
+            Route::group(['prefix'=> '{post}/comments', 'as'=> 'comments.'], function(){
+                Route::post('/store',[App\Http\Controllers\CommentController::class, 'store'])->name('store');
+                Route::delete('{comment}/destroy',[App\Http\Controllers\CommentController::class, 'destroy'])->name('destroy');
+            });
+        });
 
-    Route::group(['prefix'=> "posts" , 'as'=> 'posts.'], function(){
-        Route::get('/',[App\Http\Controllers\PostController::class, 'index'])->name('index');
-        Route::post('/store',[App\Http\Controllers\PostController::class, 'store'])->name('store');
     });
+
+
+   
+
 
 
     

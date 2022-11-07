@@ -46,6 +46,7 @@
                                     <span>تسجيل الدخول</span>
                                 </button>
                             </div>
+                            <a href="{{ route('register') }}" class="text-center d-block">انشاء حساب جديد ؟</a>
                         </form>
                     </div>
                 </div>

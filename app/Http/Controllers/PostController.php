@@ -15,6 +15,12 @@ class PostController extends Controller
         return view('posts.index', compact('items'));
     }
 
+    public function show(Post $post)
+    {
+        $comments = $post->comments()->orderBy('id', 'desc')->get();
+        return view("posts.show", compact('post', 'comments'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -44,5 +50,17 @@ class PostController extends Controller
             "message"=> "تم اضافة العنصر بنجاح",
             'icon'=> "success",
         ]);
+    }
+
+    public function destroy(Post $post)
+    {
+        if($post->user_id == auth()->id() || auth()->user()->role == "admin"){
+            $src = $post->src;
+            if($post->type == "video" || $post->type == "image"){
+                Storage::delete($src);
+            }
+            $post->delete();
+        }
+        return response()->json("done");
     }
 }

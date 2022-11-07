@@ -73,13 +73,19 @@
                         <div class="post-img">
                             <img src="{{ optional($item->user)->avatar }}" alt="">
                         </div>
-                        <div class="post-meta">
+                        <div class="post-meta w-100">
                             <h4>{{ optional($item->user)->fname . ' '. optional($item->user)->lname }}</h4>
-                            <p class="d-flex justify-content-between">
-                                <span style="padding-left: 15px;">{{ $item->title }}</span> 
-                                <span>{{ $item->created_at->diffForHumans() }}</span>
-                            </p>
-                            
+                            <div>
+                                <p class="d-flex justify-content-start">
+                                    <span style="padding-left: 15px;">{{ $item->title }}</span> 
+                                    <span>{{ $item->created_at->diffForHumans() }}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="post-control">
+                            @if ($item->user_id == auth()->id() || auth()->user()->role == "admin")
+                            <a onclick="deleteItem('{{ route('posts.destroy', $item->id) }}')" class="destroy-btn"><i class="fa fa-trash"></i></a>
+                            @endif
                         </div>
                     </div>
                     <div class="post-body">
@@ -95,7 +101,7 @@
                         
                     </div>
                     <div class="post-footer">
-                        <a class="button" href="#">التعليقات</a>
+                        <a class="button" href="{{ route('posts.show', $item->id) }}">التعليقات</a>
                         <div class="post-footer-meta">
                             <i class="fa fa-comments"></i>
                             <span>{{ $item->comments_count }}</span>
@@ -195,12 +201,57 @@
             color: white;
             font-weight: bold;;
         }
+        .destroy-btn{
+            display: block;
+            width: 40px;
+            color: #991616 !important;
+            text-align: center;
+            cursor: pointer;
+        }
     </style>
 @endsection
 
 
 @section('script')
     <script>
+        
+        function deleteItem(url){
+            swal("هل تريد حذف المناقشة ؟",{
+                "icon": "warning",
+                closeOnClickOutside: false,
+                closeOnEsc: false,
+                dangerMode: true,
+                buttons: {
+                    cancel: {
+                        text: "لا",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                      },
+                      confirm: {
+                        text: "نعم, احذف",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: true
+                      }
+                }
+                
+            }).then((result) => {
+                if (result) {
+                  $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {"_token": "{{ csrf_token() }}", "_method": "DELETE"},
+                        success: function(data,status,xhr){
+                            window.location.reload();
+                        }
+                  });
+                }
+            })
+        }
+
         function handleInputs(val){
             if(val == "text"){
                 $("#text").removeClass('d-none');

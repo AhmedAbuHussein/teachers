@@ -78,9 +78,6 @@
                                                 <a href="{{ route('profile.index') }}">الصفحة الشخصية</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('payments.index') }}">المشتريات</a>
-                                            </li>
-                                            <li>
                                                 <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">

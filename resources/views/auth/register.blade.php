@@ -1,77 +1,95 @@
 @extends('layouts.app')
 
+@section('breadcrumb')
+    <li>
+        <span>انشاء حساب</span>
+    </li>
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<main class="main-content">
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+    <!-- Start Req-page -->
+    <section class="req-page body-inner">
+        <div class="container">
+            <div class="row">
+                <!-- Col -->
+                <div class="col-md-12">
+                    <div class="form-req">
+                        <div class="form-inner">
+                            <h3>انشاء حساب</h3>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <form action="{{ route('register') }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>الاسم الاول</label>
+                                            <input type="text" required value="{{ old('fname') }}" name="fname" placeholder="الاسم الاول" class="form-control" />
+                                            @error('fname')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>الاسم الاخير</label>
+                                            <input type="text" required value="{{ old('lname') }}" name="lname" placeholder="الاسم الاخير" class="form-control" />
+                                            @error('lname')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>البريد الإليكتروني</label>
+                                    <input type="email" required value="{{ old('email') }}" name="email" placeholder="البريد الإليكتروني" class="form-control" />
+                                    @error('email')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                                <div class="form-group">
+                                    <label>رقم الهاتف</label>
+                                    <input type="number" required value="{{ old('phone') }}" name="phone" placeholder="رقم الهاتف" class="form-control" />
+                                    @error('phone')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label>كلمة السر</label>
+                                    <input type="password" required name="password" placeholder="كلمة المرور" class="form-control"  />
+                                    @error('password')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>تأكيد كلمة السر</label>
+                                    <input type="password" name="password_confirmation" placeholder="تاكيد كلمة المرور" class="form-control"  required />
+                                </div>
+                                <div class="form-group">
+                                    <div class="agree-h">
+                                        <input type="checkbox" />
+                                        <span>قرأت كل <a target="_blank" href="{{ route('privacy') }}">الشروط والأحكام</a></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-form" type="submit">
+                                        <span>إنشاء حساب</span>
+                                    </button>
+                                    <a href="{{ route('login') }}" class="aready-account">لديك حساب بالفعل ؟</a>
+                                </div>
+                            </form>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
+                <!-- /Col -->
             </div>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- End Req-page -->
+</main>
 @endsection
