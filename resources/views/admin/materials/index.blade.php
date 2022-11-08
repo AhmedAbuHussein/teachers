@@ -22,6 +22,7 @@
                         <th>الاسم</th>
                         <th>النوع</th>
                         <th>الماده</th>
+                        <th>المستوي</th>
                         <th>التحكم</th>
                     </tr>
                 </thead>
@@ -32,6 +33,7 @@
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->type }}</td>
                             <td>{{ optional($item->course)->title }}</td>
+                            <td>{{ optional(optional($item->course)->level)->title }}</td>
                             <td>
                                 <a class="btn btn-success" href="{{ route('dashboard.materials.edit', $item->id) }}"><i class="fa fa-edit"></i></a>
                                 <a class="btn btn-danger confirm" href="{{ route('dashboard.materials.destroy', $item->id) }}"><i class="fa fa-trash"></i></a>

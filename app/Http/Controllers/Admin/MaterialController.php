@@ -31,7 +31,7 @@ class MaterialController extends Controller
             "text"=> "nullable|required_if:type,text|string",
             "url"=> "nullable|required_if:type,url|string",
             "src"=> "nullable|sometimes|required_if:type,file",
-            "course_id"=> 'required|numeric|exists:users,id',
+            "course_id"=> 'required|numeric|exists:courses,id',
         ]);
         $data = $request->except(["src", "text", "url", "_token", '_method']);
         if(in_array($request->type, ["file"])){
@@ -69,7 +69,7 @@ class MaterialController extends Controller
             "text"=> "nullable|required_if:type,text|string",
             "url"=> "nullable|required_if:type,url|string",
             "src"=> "nullable|sometimes|required_if:type,file",
-            "course_id"=> 'required|numeric|exists:users,id',
+            "course_id"=> 'required|numeric|exists:courses,id',
         ]);
         $data = $request->except(["src","text", "url", "_token", '_method']);
         if(in_array($request->type, ["file"])){

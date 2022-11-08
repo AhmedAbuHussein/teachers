@@ -157,15 +157,12 @@ Route::group(['middleware'=> ['auth']], function(){
 
 
         Route::group(['prefix'=> "library" , 'as'=> 'library.'], function(){
-            Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
-    
+            Route::get('/',[App\Http\Controllers\LibraryController::class, 'index'])->name('index');    
             Route::group(['prefix'=> "{level}/courses" , 'as'=> 'courses.'], function(){
-                Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
-                Route::get('{course}/show',[App\Http\Controllers\ProductController::class, 'show'])->name('show');
+                Route::get('{course}/content',[App\Http\Controllers\MaterialController::class, 'index'])->name('index');
+                Route::get('{course}/show',[App\Http\Controllers\MaterialController::class, 'show'])->name('show');
             });
         });
-    
-        
     
         Route::group(['prefix'=> "posts" , 'as'=> 'posts.'], function(){
             Route::get('/',[App\Http\Controllers\PostController::class, 'index'])->name('index');

@@ -41,7 +41,7 @@
                         <select required name="course_id" id="course_id" class="form-control">
                             <option value="">اختار</option>
                             @foreach ($courses as $course)
-                                <option {{ old('course_id') ==  $course->id ? 'selected': '' }} value="{{ $course->id }}">{{ $course->title }}</option>
+                                <option {{ old('course_id') ==  $course->id ? 'selected': '' }} value="{{ $course->id }}">{{ $course->title }} - {{ $course->level->title }}</option>
                             @endforeach
                         </select>
                         @error('course_id')

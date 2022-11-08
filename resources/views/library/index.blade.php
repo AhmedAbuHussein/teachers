@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section("title")
-    المنتجات
+    المكتبة
 @endsection
 @section('breadcrumb')
     <li> 
-        <span>المنتجات</span>
+        <span>المكتبة</span>
     </li>
 @endsection
 @section('content')
@@ -19,20 +19,20 @@
                     <div class="d-flex justify-content-between w-100">
                        
                         <div class="form-group">
-                            <select name="category" class="form-control" onchange="document.getElementById('search').submit()">
-                                <option value="">اختار فئة</option>
-                                @foreach ($categories as $item)
-                                    <option {{ request()->get('category') == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->title }}</option>
+                            <select name="level" class="form-control" onchange="document.getElementById('search').submit()">
+                                <option value="">اختار المستوي</option>
+                                @foreach ($levels as $item)
+                                    <option {{ request()->get('level') == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->title }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <a href="{{ route('products.index') }}" class="btn btn-form" title="اعادة تحميل"><i class="fa fa-recycle"></i></a>
+                            <a href="{{ route('library.index') }}" class="btn btn-form" title="اعادة تحميل"><i class="fa fa-recycle"></i></a>
                         </div>
 
                         <div class="form-group">
-                            <input type="search" id="search" class="form-control" name="q" value="{{ request()->get('q') }}" placeholder="ابحث عن منتج">
+                            <input type="search" id="search" class="form-control" name="q" value="{{ request()->get('q') }}" placeholder="ابحث عن ماده">
                         </div>
 
                     </div>
@@ -47,14 +47,18 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="cat-block">
                         <div class="img">
-                            <a href="{{ route('products.show', $item->id) }}">
+                            <a href="{{ route('library.courses.show', ['level'=> $item->level_id,'course'=>$item->id]) }}">
                                 <img src="{{ $item->avatar }}" />
                             </a>
                         </div>
                         <div class="details">
                             <h3>{{ $item->title }}</h3>
-                            <p>{{ $item->short_text }}</p>
-                            <a href="{{ route('products.show', $item->id) }}" class="btn-shop">عرض</a>
+                            <span class="badge badge-success">{{ $item->level->title }}</span>
+                            <p>{{ $item->text }}</p>
+                           <div class="d-flex justify-content-between gap-10">
+                            <a href="{{ route('library.courses.show', ['level'=> $item->level_id,'course'=>$item->id]) }}" class="btn-shop">عرض</a>
+                            <a href="{{ route('library.courses.index', ['level'=> $item->level_id,'course'=>$item->id]) }}" class="btn-shop">محتوي</a>
+                           </div>
                         </div>
                     </div>
                 </div>
@@ -72,4 +76,16 @@
         </div>
     </div>
 </section>
+
+@endsection
+@section('styles')
+    <style>
+        .cat-block .details .btn-shop{
+            min-width: auto;
+            width:100%;
+        }
+        .gap-10{
+            gap: 10px;
+        }
+    </style>
 @endsection
