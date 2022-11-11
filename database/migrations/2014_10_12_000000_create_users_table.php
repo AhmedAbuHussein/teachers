@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->text('bio')->nullable();
             
             $table->enum('status', ['active', 'inactive'])->default('inactive');
-            $table->enum("role", ['professor', 'admin'])->default('professor');
+            $table->enum("role", ['professor', "supervisor",'admin'])->default('professor');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

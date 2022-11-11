@@ -17,9 +17,9 @@ class Category extends Model
         return $this->image ? Storage::url($this->image) : asset('images/favicon.png');
     }
 
-    public function products()
+    public function news()
     {
-        return $this->hasMany(Product::class, 'category_id');
+        return $this->hasMany(News::class, 'category_id');
     }
 
 }

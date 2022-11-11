@@ -16,8 +16,8 @@ class UserFactory extends Factory
     public function definition()
     {
         User::create([
-            'fname' => $this->faker->name(),
-            'lname' => $this->faker->name(),
+            'fname' => "Admin",
+            'lname' => "Admin",
             'email' => "admin@gmail.com",
             'phone'=> $this->faker->phoneNumber(),
             'status'=> 'active',
@@ -26,9 +26,20 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ]);
+        User::create([
+            'fname' => "supervisor",
+            'lname' => "supervisor",
+            'email' => "supervisor@gmail.com",
+            'phone'=> $this->faker->phoneNumber(),
+            'status'=> 'active',
+            'role'=> 'supervisor',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ]);
         return [
-            'fname' => $this->faker->name(),
-            'lname' => $this->faker->name(),
+            'fname' => Str::words($this->faker->name(), 1),
+            'lname' => Str::words($this->faker->name(), 1),
             'email' => "doc@gmail.com",
             'phone'=> $this->faker->phoneNumber(),
             'address'=> $this->faker->address(),

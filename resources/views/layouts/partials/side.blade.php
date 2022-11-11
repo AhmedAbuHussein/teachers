@@ -17,9 +17,9 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.products.index') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.news.index') }}" aria-expanded="false">
                         <i class="ti ti-shopping-cart"></i>
-                        <span class="hide-menu">المنتجات</span>
+                        <span class="hide-menu">الاخبار</span>
                     </a>
                 </li>
 
@@ -69,13 +69,6 @@
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.contacts.index') }}" aria-expanded="false">
                         <i class="ti ti-control-play"></i>
                         <span class="hide-menu">تواصل معنا</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('dashboard.payments.index') }}" aria-expanded="false">
-                        <i class="ti ti-money"></i>
-                        <span class="hide-menu">عمليات الشراء</span>
                     </a>
                 </li>
 

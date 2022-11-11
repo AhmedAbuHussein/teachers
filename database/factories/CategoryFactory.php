@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
         Storage::putFileAs("images/", public_path('/seeder/cat_001.png'), $name);
 
         Category::create([
-            "title"=> "معامل",
+            "title"=> "حديثة",
             "text"=> "خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي منذ العام 45 قبل الميلاد، مما يجعله أكثر من 2000 عام في القدم.",
             "image"=> "images/$name"
         ]);
@@ -29,7 +29,7 @@ class CategoryFactory extends Factory
         $name = "category_". Str::random(). '.png';
         Storage::putFileAs("images/", public_path('/seeder/cat_002.png'), $name);
         Category::create([
-            "title"=> "عبايات",
+            "title"=> "مميزة",
             "text"=> "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة",
             "image"=> "images/$name"
         ]);
@@ -37,7 +37,7 @@ class CategoryFactory extends Factory
         $name = "category_". Str::random(). '.png';
         Storage::putFileAs("images/", public_path('/seeder/cat_003.png'), $name);
         return [
-            "title"=> "سكارف",
+            "title"=> "خاصة",
             "text"=> "هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص.",
             "image"=> "images/$name"
         ];

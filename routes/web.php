@@ -20,14 +20,14 @@ Route::group(['prefix'=> 'dashboard', 'as'=> 'dashboard.', 'middleware'=> ['auth
         Route::get('{category}/destroy', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('destroy');
     });
 
-    # PRODUCTS ROUTES
-    Route::group(['prefix'=> 'products', 'as'=> 'products.'], function(){
-        Route::get('/', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('index');
-        Route::get('/create', [App\Http\Controllers\Admin\ProductController::class, 'create'])->name('create');
-        Route::post('/store', [App\Http\Controllers\Admin\ProductController::class, 'store'])->name('store');
-        Route::get('{product}/edit', [App\Http\Controllers\Admin\ProductController::class, 'edit'])->name('edit');
-        Route::put('{product}/update', [App\Http\Controllers\Admin\ProductController::class, 'update'])->name('update');
-        Route::get('{product}/destroy', [App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('destroy');
+    # News ROUTES
+    Route::group(['prefix'=> 'news', 'as'=> 'news.'], function(){
+        Route::get('/', [App\Http\Controllers\Admin\NewsController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Admin\NewsController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Admin\NewsController::class, 'store'])->name('store');
+        Route::get('{news}/edit', [App\Http\Controllers\Admin\NewsController::class, 'edit'])->name('edit');
+        Route::put('{news}/update', [App\Http\Controllers\Admin\NewsController::class, 'update'])->name('update');
+        Route::get('{news}/destroy', [App\Http\Controllers\Admin\NewsController::class, 'destroy'])->name('destroy');
     });
 
 

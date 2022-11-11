@@ -17,8 +17,8 @@
 /* End Fonts */
 
 :root {
-    --main-color: #faa61a;
-    --sec-color: #f0763d;
+    --main-color: #ce6828;
+    --sec-color: #6c2766;
     --dark-color: #131313;
     --bg-color: #F2F2F2;
     --dark-gray: #767891;
@@ -1280,7 +1280,7 @@ header {
     letter-spacing: 0px;
     font-weight: 700;
     font-size: 66px;
-    background: rgb(250 166 26 / 80%);
+    background: rgb(108 39 102 / 80%);
     padding: 20px;
     /* font-family: "Playfair Display"; */
 }
