@@ -21,7 +21,7 @@
                         <th>#</th>
                         <th>الاسم</th>
                         <th>الصورة</th>
-                        <th>المنتجات</th>
+                        <th>الاخبار</th>
                         <th>التحكم</th>
                     </tr>
                 </thead>
@@ -31,7 +31,7 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->title }}</td>
                             <td><img class="table-custom-image" src="{{ $item->avatar }}" alt=""></td>
-                            <td>{{ $item->products_count }}</td>
+                            <td>{{ $item->news_count }}</td>
                             <td>
                                 <a class="btn btn-success" href="{{ route('dashboard.categories.edit', $item->id) }}"><i class="fa fa-edit"></i></a>
                                 <a class="btn btn-danger confirm" href="{{ route('dashboard.categories.destroy', $item->id) }}"><i class="fa fa-trash"></i></a>

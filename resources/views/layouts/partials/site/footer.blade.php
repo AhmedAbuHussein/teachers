@@ -80,8 +80,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('products.index') }}">
-                                   المنتجات
+                                <a href="{{ route('news.index') }}">
+                                   الاخبار
                                 </a>
                             </li>
                             <li>
@@ -119,8 +119,8 @@
                             </li>
                             @auth
                             <li>
-                                <a href="{{ route('products.index') }}">
-                                    منتجات
+                                <a href="{{ route('news.index') }}">
+                                    الاخبار
                                 </a>
                             </li>
                             @endauth

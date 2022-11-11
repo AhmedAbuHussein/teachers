@@ -142,20 +142,13 @@ Route::group(['middleware'=> ['auth']], function(){
         Route::post('password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('password');
     });
 
-    Route::group(['prefix'=> "products" , 'as'=> 'products.'], function(){
-        Route::get('/',[App\Http\Controllers\ProductController::class, 'index'])->name('index');
-        Route::get('{product}/show',[App\Http\Controllers\ProductController::class, 'show'])->name('show');
+    Route::group(['prefix'=> "news" , 'as'=> 'news.'], function(){
+        Route::get('/',[App\Http\Controllers\NewsController::class, 'index'])->name('index');
+        Route::get('{news}/show',[App\Http\Controllers\NewsController::class, 'show'])->name('show');
     });
 
     Route::group(['middleware'=> 'active'], function(){
-        
-        Route::group(['prefix'=> "payments" , 'as'=> 'payments.'], function(){
-            Route::get('/',[App\Http\Controllers\PaymentController::class, 'index'])->name('index');
-            Route::get('{product}/buy',[App\Http\Controllers\PaymentController::class, 'buy'])->name('buy');
-            Route::post('{product}/buy',[App\Http\Controllers\PaymentController::class, 'checkout']);
-        });
-
-
+    
         Route::group(['prefix'=> "library" , 'as'=> 'library.'], function(){
             Route::get('/',[App\Http\Controllers\LibraryController::class, 'index'])->name('index');    
             Route::group(['prefix'=> "{level}/courses" , 'as'=> 'courses.'], function(){

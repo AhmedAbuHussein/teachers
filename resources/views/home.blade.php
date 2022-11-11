@@ -47,7 +47,7 @@
 </section>
 <!-- End Slider-h -->
 
-
+{{--  
 <!-- Start New-arrival -->
 <section class="new-arrival">
     <div class="container">
@@ -63,7 +63,7 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="more-products">
-                    <a href="{{ route('products.index') }}">
+                    <a href="{{ route('news.index') }}">
                         عرض المزيد
                         <i class="la la-angle-left"></i>
                     </a>
@@ -74,28 +74,20 @@
             <!-- Col -->
             <div class="col-md-12">
                 <div class="all-pro row">
-                    @forelse ($products as $item)
+                    @forelse ($courses as $item)
                     <!-- Col -->
                     <div class="col-md-3 col-sm-6">
                         <div class="pro-block">
                             <div class="img-block">
-                                <a href="{{ route('products.show', $item->id) }}" class="img">
+                                <a href="{{ route('news.show', $item->id) }}" class="img">
                                     <img src="{{ $item->avatar }}" />
                                 </a>
                             </div>
                             <div class="details">
-                                <a href="{{ route('products.show', $item->id) }}" class="name">
+                                <a href="{{ route('news.show', $item->id) }}" class="name">
                                     {{ $item->title }}
                                 </a>
-                                <div class="price-h">
-                                    <span class="new-price">
-                                       {{ $item->discount_price ? $item->discount_price : $item->price }} <u>د.ك</u>
-                                    </span>
-                                    <span class="old-price">
-                                        {{ $item->price }}
-                                    </span>
-                                </div>
-                                <a href="{{ route('products.show', $item->id) }}" class="btn-add-cart">
+                                <a href="{{ route('news.show', $item->id) }}" class="btn-add-cart">
                                    عرض
                                 </a>
                             </div>
@@ -114,7 +106,7 @@
         </div>
     </div>
 </section>
-<!-- End New-arrival -->
+<!-- End New-arrival -->  --}}
 
 
 <!-- Start New-arrival -->
@@ -192,7 +184,7 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="title">
-                    <h3>الاقسام</h3>
+                    <h3>فئات الاخبار</h3>
                 </div>
             </div>
             <!-- /Col -->
@@ -210,14 +202,14 @@
             <div class="col-md-4 col-sm-12">
                 <div class="cat-block">
                     <div class="img">
-                        <a href="{{ route('products.index', ['category'=> $item->id]) }}">
+                        <a href="{{ route('news.index', ['category'=> $item->id]) }}">
                             <img src="{{ $item->avatar }}" />
                         </a>
                     </div>
                     <div class="details">
                         <h3>{{ $item->title }}</h3>
                         <p>{{ $item->text }} </p>
-                        <a href="{{ route('products.index', ['category'=> $item->id]) }}" class="btn-shop">تسوق الان</a>
+                        <a href="{{ route('news.index', ['category'=> $item->id]) }}" class="btn-shop">عرض</a>
                     </div>
                 </div>
             </div>
@@ -240,7 +232,7 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="title">
-                    <h3>المميزه</h3>
+                    <h3>الاخبار</h3>
                 </div>
             </div>
             <!-- /Col -->
@@ -248,7 +240,7 @@
             <!-- Col -->
             <div class="col-md-6">
                 <div class="more-products">
-                    <a href="{{ route('products.index') }}">
+                    <a href="{{ route('news.index') }}">
                         عرض المزيد
                         <i class="la la-angle-left"></i>
                     </a>
@@ -260,28 +252,20 @@
             <!-- Col -->
             <div class="col-md-12">
                 <div class="best-slider owl-carousel owl-theme">
-                    @forelse ($features as $item)
+                    @forelse ($news as $item)
                         <!-- Item -->
                         <div class="item">
                             <div class="pro-block">
                                 <div class="img-block">
-                                    <a href="{{ route('products.show', $item->id) }}" class="img">
+                                    <a href="{{ route('news.show', $item->id) }}" class="img">
                                         <img src="{{ $item->avatar }}" />
                                     </a>
                                 </div>
                                 <div class="details">
-                                    <a href="{{ route('products.show', $item->id) }}" class="name">
+                                    <a href="{{ route('news.show', $item->id) }}" class="name">
                                         {{ $item->title }}
                                     </a>
-                                    <div class="price-h">
-                                        <span class="new-price">
-                                           {{ $item->discount_price ? $item->discount_price : $item->price }} <u>د.ك</u>
-                                        </span>
-                                        <span class="old-price">
-                                            {{ $item->price }}
-                                        </span>
-                                    </div>
-                                    <a href="{{ route('products.show', $item->id) }}" class="btn-add-cart">
+                                    <a href="{{ route('news.show', $item->id) }}" class="btn-add-cart">
                                        عرض
                                     </a>
                                 </div>

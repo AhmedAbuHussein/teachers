@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section("title")
-    المنتجات
+    الاخبار
 @endsection
 @section('breadcrumb')
     <li> 
-        <span>المنتجات</span>
+        <span>الاخبار</span>
     </li>
 @endsection
 @section('content')
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group">
-                            <a href="{{ route('products.index') }}" class="btn btn-form" title="اعادة تحميل"><i class="fa fa-recycle"></i></a>
+                            <a href="{{ route('news.index') }}" class="btn btn-form" title="اعادة تحميل"><i class="fa fa-recycle"></i></a>
                         </div>
 
                         <div class="form-group">
@@ -47,14 +47,14 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="cat-block">
                         <div class="img">
-                            <a href="{{ route('products.show', $item->id) }}">
+                            <a href="{{ route('news.show', $item->id) }}">
                                 <img src="{{ $item->avatar }}" />
                             </a>
                         </div>
                         <div class="details">
                             <h3>{{ $item->title }}</h3>
-                            <p>{{ $item->short_text }}</p>
-                            <a href="{{ route('products.show', $item->id) }}" class="btn-shop">عرض</a>
+                            <p>{{ $item->text }}</p>
+                            <a href="{{ route('news.show', $item->id) }}" class="btn-shop">عرض</a>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Course;
+use App\Models\News;
 use App\Models\Privacy;
 use App\Models\Product;
 use App\Models\Setting;
@@ -15,10 +16,9 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::inRandomOrder()->limit(3)->get();
-        $products = Product::where(['is_active'=> 1])->inRandomOrder()->limit(8)->get();
-        $features = Product::where(['is_active'=> 1, 'is_feature'=> 1])->inRandomOrder()->limit(6)->get();
+        $news = News::inRandomOrder()->limit(6)->get();
         $courses = Course::where(['is_active'=> 1])->inRandomOrder()->limit(6)->get();
-        return view('home', compact('categories', 'features', 'products', 'courses'));
+        return view('home', compact('categories', 'news', 'courses'));
     }
 
     public function about()

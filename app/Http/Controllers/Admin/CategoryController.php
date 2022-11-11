@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $items = Category::withCount("products")->get();
+        $items = Category::withCount("news")->get();
         return view('admin.categories.index', compact('items'));
     }
 

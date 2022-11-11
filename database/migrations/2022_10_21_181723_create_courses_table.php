@@ -23,6 +23,8 @@ class CreateCoursesTable extends Migration
             $table->boolean('is_active')->default(1);
 
             $table->foreignId('level_id')->nullable()->constrained('levels')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

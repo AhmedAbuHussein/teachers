@@ -21,9 +21,9 @@
                                     </a>
                                 </li>
                                @auth
-                                <li class="{{ active('products.index') }}">
-                                    <a href="{{ route('products.index') }}">
-                                        المنتجات
+                                <li class="{{ active('news.index') }}">
+                                    <a href="{{ route('news.index') }}">
+                                        الاخبار
                                     </a>
                                 </li>
                                 <li class="{{ active('library.index') }}">

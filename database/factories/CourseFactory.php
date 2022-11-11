@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Level;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CourseFactory extends Factory
@@ -25,6 +26,7 @@ class CourseFactory extends Factory
             "text"=> "خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي منذ العام 45 قبل الميلاد، مما يجعله أكثر من 2000 عام في القدم. قام البروفيسور ريتشارد ماك لينتوك وهو بروفيسور اللغة اللاتينية في جامعة هامبدن-سيدني في فيرجينيا بالبحث عن أصول كلمة لاتينية غامضة في نص لوريم إيبسوم",
             "is_active"=> 1,
             "level_id"=> $id,
+            'user_id'=> collect(User::where('role', 'professor')->get())->random()->id,
         ];
     }
 }
