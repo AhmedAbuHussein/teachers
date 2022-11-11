@@ -1,18 +1,18 @@
-@extends('layouts.admin')
+@extends('layouts.supervisor')
 
 @section('title')
 تعديل
 @endsection
 @section('breadcrumb')
 <li class="breadcrumb-item"> 
-    <a href="{{ route('dashboard.users.index') }}">المستخدمون</a> 
+    <a href="{{ route('supervisor.users.index') }}">المستخدمون</a> 
 </li>
 <li class="breadcrumb-item">تعديل</li>
 @endsection
 
 @section('content')
 <div class="container-fluid">
-    <form action="{{ route('dashboard.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('supervisor.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">

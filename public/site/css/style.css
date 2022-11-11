@@ -1461,10 +1461,10 @@ header {
 
 .slider-block .img-slider img {
     -webkit-mask-size: cover;
-    -webkit-mask-position: center;
+    -webkit-mask-position: top;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
     max-width: 100%;
     margin-inline-start: auto;
     -webkit-mask-repeat: no-repeat;
@@ -1697,7 +1697,7 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 
 

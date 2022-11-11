@@ -74,6 +74,7 @@
                     <select required name="role" id="role" class="form-control">
                         <option value="">اختار الدور</option>
                         <option {{ old('role') == 'admin' ? 'selected': '' }} value="admin">مدير</option>
+                        <option {{ old('role') == 'supervisor' ? 'selected': '' }} value="supervisor">مشرف</option>
                         <option {{ old('role') == 'professor' ? 'selected': '' }} value="professor">دكتور</option>
                     </select>
                     @error('role')

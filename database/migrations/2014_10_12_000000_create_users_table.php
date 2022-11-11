@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->enum("role", ['professor', "supervisor",'admin'])->default('professor');
             $table->timestamp('email_verified_at')->nullable();
+            $table->foreignId('level_id')->nullable()->constrained('levels')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });

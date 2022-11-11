@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Teachers') }} | @yield('title',"الرئيسية")</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
     <link href="{{ asset('site/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('site/css/mobile.css') }}" rel="stylesheet" type="text/css" />
     @yield('styles')

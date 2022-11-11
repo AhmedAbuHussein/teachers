@@ -125,6 +125,64 @@ Route::group(['prefix'=> 'dashboard', 'as'=> 'dashboard.', 'middleware'=> ['auth
 });
 
 
+Route::group(['prefix'=> 'supervisor', 'as'=> 'supervisor.', 'middleware'=> ['auth', 'suprevisor']], function(){
+
+    Route::get('/', [App\Http\Controllers\Supervisor\IndexController::class, 'index'])->name('index');
+
+    # Posts ROUTES
+    Route::group(['prefix'=> 'posts', 'as'=> 'posts.'], function(){
+        Route::get('/', [App\Http\Controllers\Supervisor\PostController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Supervisor\PostController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Supervisor\PostController::class, 'store'])->name('store');
+        Route::get('{post}/edit', [App\Http\Controllers\Supervisor\PostController::class, 'edit'])->name('edit');
+        Route::put('{post}/update', [App\Http\Controllers\Supervisor\PostController::class, 'update'])->name('update');
+        Route::get('{post}/destroy', [App\Http\Controllers\Supervisor\PostController::class, 'destroy'])->name('destroy');
+    });
+
+    # Comments ROUTES
+    Route::group(['prefix'=> 'comments', 'as'=> 'comments.'], function(){
+        Route::get('/', [App\Http\Controllers\Supervisor\CommentController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Supervisor\CommentController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Supervisor\CommentController::class, 'store'])->name('store');
+        Route::get('{comment}/edit', [App\Http\Controllers\Supervisor\CommentController::class, 'edit'])->name('edit');
+        Route::put('{comment}/update', [App\Http\Controllers\Supervisor\CommentController::class, 'update'])->name('update');
+        Route::get('{comment}/destroy', [App\Http\Controllers\Supervisor\CommentController::class, 'destroy'])->name('destroy');
+    });
+
+    # Users ROUTES
+    Route::group(['prefix'=> 'users', 'as'=> 'users.'], function(){
+        Route::get('/', [App\Http\Controllers\Supervisor\UserController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Supervisor\UserController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Supervisor\UserController::class, 'store'])->name('store');
+        Route::get('{user}/edit', [App\Http\Controllers\Supervisor\UserController::class, 'edit'])->name('edit');
+        Route::put('{user}/update', [App\Http\Controllers\Supervisor\UserController::class, 'update'])->name('update');
+        Route::get('{user}/destroy', [App\Http\Controllers\Supervisor\UserController::class, 'destroy'])->name('destroy');
+    });
+
+    # Courses ROUTES
+    Route::group(['prefix'=> 'courses', 'as'=> 'courses.'], function(){
+        Route::get('/', [App\Http\Controllers\Supervisor\CourseController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Supervisor\CourseController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Supervisor\CourseController::class, 'store'])->name('store');
+        Route::get('{course}/edit', [App\Http\Controllers\Supervisor\CourseController::class, 'edit'])->name('edit');
+        Route::put('{course}/update', [App\Http\Controllers\Supervisor\CourseController::class, 'update'])->name('update');
+        Route::get('{course}/destroy', [App\Http\Controllers\Supervisor\CourseController::class, 'destroy'])->name('destroy');
+    });
+
+    # Material ROUTES
+    Route::group(['prefix'=> 'materials', 'as'=> 'materials.'], function(){
+        Route::get('/', [App\Http\Controllers\Supervisor\MaterialController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\Supervisor\MaterialController::class, 'create'])->name('create');
+        Route::post('/store', [App\Http\Controllers\Supervisor\MaterialController::class, 'store'])->name('store');
+        Route::get('{material}/edit', [App\Http\Controllers\Supervisor\MaterialController::class, 'edit'])->name('edit');
+        Route::put('{material}/update', [App\Http\Controllers\Supervisor\MaterialController::class, 'update'])->name('update');
+        Route::get('{material}/destroy', [App\Http\Controllers\Supervisor\MaterialController::class, 'destroy'])->name('destroy');
+    });
+
+
+});
+
+
 
 Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('index');
 Route::get('/about',[App\Http\Controllers\HomeController::class, 'about'])->name('about');

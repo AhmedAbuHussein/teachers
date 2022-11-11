@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Supervisor;
 
-use App\Models\Post;
 use App\Models\User;
-use App\Models\Comment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,13 +12,14 @@ class UserController extends Controller
 {
     public function index()
     {
-        $items = User::get();
-        return view('admin.users.index', compact('items'));
+        $user = auth()->user();
+        $items = User::where(['level_id'=> $user->level_id, 'role'=> 'professor'])->get();
+        return view('supervisor.users.index', compact('items'));
     }
 
     public function create()
     {
-        return view('admin.users.create');
+        return view('supervisor.users.create');
     }
 
     public function store(Request $request)
@@ -29,7 +28,6 @@ class UserController extends Controller
             "fname"     => 'required|string',
             "lname"     => 'required|string',
             "email"     => "required|email",
-            "role"      => "required|string|in:admin,professor,supervisor",
             "status"    => "required|string|in:active,inactive",
             "password"  => "required|string|confirmed",
 
@@ -39,6 +37,9 @@ class UserController extends Controller
             "image"     => "nullable|image",
         ]);
         $data = $request->except(["_token", '_method', 'image', "password_confirmation"]);
+        $data['role'] = "professor";
+        $data['level_id'] = auth()->user()->level_id;
+
         if($request->hasFile("image")){
             $name = "user_" . time(). "_". Str::random() . ".". $request->file("image")->getClientOriginalExtension();
             Storage::putFileAs("images/", $request->file("image"), $name);
@@ -46,7 +47,7 @@ class UserController extends Controller
         }
         User::create($data);
 
-        return redirect()->route('dashboard.users.index')->with([
+        return redirect()->route('supervisor.users.index')->with([
             "message"=> "تم اضافة العنصر بنجاح",
             'icon'=> "success",
         ]);
@@ -54,7 +55,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        return view('supervisor.users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
@@ -63,7 +64,6 @@ class UserController extends Controller
             "fname"     => 'required|string',
             "lname"     => 'required|string',
             "email"     => "required|email",
-            "role"      => "required|string|in:admin,professor,supervisor",
             "status"    => "required|string|in:active,inactive",
             "password"  => "nullable|string|confirmed",
 
@@ -73,6 +73,10 @@ class UserController extends Controller
             "image"     => "nullable|image",
         ]);
         $data = $request->except(["_token", '_method', 'image', "password_confirmation"]);
+        $data['role'] = "professor";
+        $data['level_id'] = auth()->user()->level_id;
+
+        
         if($request->hasFile("image")){
             $old = $user->image;
             if($old){
@@ -85,7 +89,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('dashboard.users.index')->with([
+        return redirect()->route('supervisor.users.index')->with([
             "message"=> "تم تعديل العنصر بنجاح",
             'icon'=> "success",
         ]);
@@ -98,7 +102,7 @@ class UserController extends Controller
             Storage::delete($old);
         }
         $user->delete();
-        return redirect()->route('dashboard.users.index')->with([
+        return redirect()->route('supervisor.users.index')->with([
             "message"=> "تم حذف العنصر بنجاح",
             'icon'=> "success",
         ]);

@@ -14,8 +14,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="text-slider">
-                                <h4>موقع دليلي</h4>
-                                <h1>دليل المعلم</h1>
+                                <h1>استراتيجيات المعلم</h1>
                                 <p>{{ $setting->short_desc }}</p>
                             </div>
                         </div>
@@ -34,7 +33,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="text-slider">
-                                <h2>دليل المعلم</h2>
+                                <h2>استراتيجيات المعلم</h2>
                                 <p>{{ $setting->short_desc }}</p>
                             </div>
                         </div>
@@ -46,68 +45,6 @@
     </div>
 </section>
 <!-- End Slider-h -->
-
-{{--  
-<!-- Start New-arrival -->
-<section class="new-arrival">
-    <div class="container">
-        <div class="row">
-            <!-- Col -->
-            <div class="col-md-6">
-                <div class="title">
-                    <h3>المنتجات</h3>
-                </div>
-            </div>
-            <!-- /Col -->
-
-            <!-- Col -->
-            <div class="col-md-6">
-                <div class="more-products">
-                    <a href="{{ route('news.index') }}">
-                        عرض المزيد
-                        <i class="la la-angle-left"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- /Col -->
-
-            <!-- Col -->
-            <div class="col-md-12">
-                <div class="all-pro row">
-                    @forelse ($courses as $item)
-                    <!-- Col -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="pro-block">
-                            <div class="img-block">
-                                <a href="{{ route('news.show', $item->id) }}" class="img">
-                                    <img src="{{ $item->avatar }}" />
-                                </a>
-                            </div>
-                            <div class="details">
-                                <a href="{{ route('news.show', $item->id) }}" class="name">
-                                    {{ $item->title }}
-                                </a>
-                                <a href="{{ route('news.show', $item->id) }}" class="btn-add-cart">
-                                   عرض
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Col -->
-                    @empty
-                    <div class="col-12">
-                        <p class="text-center">لا يوجد بيانات لعرضها 💁‍♀️💁‍♀️💁‍♀️</p>
-                    </div>
-                    @endforelse
-                   
-                </div>
-            </div>
-            <!-- /Col -->
-        </div>
-    </div>
-</section>
-<!-- End New-arrival -->  --}}
-
 
 <!-- Start New-arrival -->
 <section class="new-arrival">

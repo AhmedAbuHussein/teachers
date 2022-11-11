@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +13,8 @@ class ProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('profile.index', compact('user'));
+        $courses = Course::where('user_id', $user->id)->paginate(4);
+        return view('profile.index', compact('user', 'courses'));
     }
 
     public function updatePassword(Request $request)

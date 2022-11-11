@@ -42,7 +42,7 @@
                                     <button class="nav-link active" data-toggle="tab" data-target="#myInfo" type="button">معلوماتي الشخصية</button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class="nav-link" data-toggle="tab" data-target="#myServ" type="button">المشتريات</button>
+                                    <button class="nav-link" data-toggle="tab" data-target="#myServ" type="button">الدروس</button>
                                 </li>
                                 <li class="nav-item">
                                     <button class="nav-link" data-toggle="tab" data-target="#changePass" type="button">تغيير كلمة المرور</button>
@@ -126,25 +126,25 @@
                         <div class="tab-pane fade" id="myServ">
                             <div class="tabs-content-profile tabs-content-serv">
                                 <div class="all-pro row">
-                                    @forelse ($user->payments as $item)
+                                    @forelse ($courses as $item)
                                         <!-- Col -->
                                         <div class="col-md-6">
                                             <div class="pro-block">
                                                 <div class="img-block">
-                                                    <a href="{{ route('products.show', ['product'=> $item->product_id]) }}" class="img">
-                                                        <img src="{{ $item->product->avatar }}" />
+                                                    <a href="{{ route('library.courses.show', ['level'=> $item->level_id, 'course'=> $item->id]) }}" class="img">
+                                                        <img src="{{ $item->avatar }}" />
                                                     </a>
                                                 </div>
                                                 <div class="details">
                                                    <ul class="list-group">
-                                                        <li class="list-group-item d-flex justify-content-center"> {{ $item->product->title }}</li>
+                                                        <li class="list-group-item d-flex justify-content-center"> {{ $item->title }}</li>
                                                         <li class="list-group-item d-flex justify-content-between">
-                                                            <span>الكمية</span>
-                                                            <span>{{ $item->count }}</span>
+                                                            <span>كود الكورس</span>
+                                                            <span>{{ $item->code }}</span>
                                                         </li>
                                                         <li class="list-group-item d-flex justify-content-between">
-                                                            <span>السعر</span>
-                                                            <span>{{ $item->total }} د.ك</span>
+                                                            <span>المستوي</span>
+                                                            <span>{{ $item->level->title }}</span>
                                                         </li>
                                                    </ul>
                                                 </div>
@@ -155,12 +155,13 @@
                                         <!-- Col -->
                                         <div class="col-12">
                                             <div class="d-flex justify-content-center align-items-center" style="min-height: 300px">
-                                                <p>لا يوجد مشتريات لعرضها</p>
+                                                <p>لا يوجد دروس لعرضها</p>
                                             </div>
                                         </div>
                                         <!-- /Col -->
                                     @endforelse
                                    
+                                    {!! $courses->links() !!}
                                     
                                     
                                 </div>
