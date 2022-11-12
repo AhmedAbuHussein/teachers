@@ -55,7 +55,7 @@
                 </div>
             </div>
             
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="status">الحالة</label>
                     <select required name="status" id="status" class="form-control">
@@ -69,23 +69,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="role">الدور</label>
-                    <select required name="role" id="role" class="form-control">
-                        <option value="">اختار الدور</option>
-                        <option {{ old('role', $user->role) == 'admin' ? 'selected': '' }} value="admin">مدير</option>
-                        <option {{ old('role', $user->role) == 'supervisor' ? 'selected': '' }} value="supervisor">مشرف</option>
-                        <option {{ old('role', $user->role) == 'professor' ? 'selected': '' }} value="professor">دكتور</option>
-                    </select>
-                    @error('role')
-                        <p class="m-0 text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
-
-
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="password">كلمة المرور</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="كلمة المرور">
@@ -95,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="password_confirmation">تاكيد كلمة المرور</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="تاكيد كلمة المرور">

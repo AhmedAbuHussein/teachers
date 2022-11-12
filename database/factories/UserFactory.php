@@ -40,8 +40,8 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ]);
         return [
-            'fname' => Str::words($this->faker->name(), 1),
-            'lname' => Str::words($this->faker->name(), 1),
+            'fname' => Str::words($this->faker->name(), 1, ''),
+            'lname' => Str::words($this->faker->name(), 1, ''),
             'email' => "doc@gmail.com",
             'phone'=> $this->faker->phoneNumber(),
             'address'=> $this->faker->address(),

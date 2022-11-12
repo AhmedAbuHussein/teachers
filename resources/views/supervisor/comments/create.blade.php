@@ -19,19 +19,6 @@
                     @csrf
                   
                     <div class="form-group">
-                        <label for="user_id">المستخدم</label>
-                        <select required name="user_id" id="user_id" class="form-control">
-                            <option value="">اختار</option>
-                            @foreach ($users as $user)
-                                <option {{ old('user_id') ==  $user->id ? 'selected': '' }} value="{{ $user->id }}">[{{ $user->role }}] {{ $user->fname . ' ' . $user->lname }} - {{ $user->email }}</option>
-                            @endforeach
-                        </select>
-                        @error('user_id')
-                            <p class="m-0 text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
                         <label for="post_id">المنشور</label>
                         <select required name="post_id" id="post_id" class="form-control">
                             <option value="">اختار</option>

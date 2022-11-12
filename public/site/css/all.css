@@ -11158,7 +11158,12 @@
 }
 
 .fa-star:before {
-    content: "\f005"
+    content: "\f005";
+    color: var(--main-color);
+
+}
+.fa-star-o:before {
+    content: "\f006";
 }
 
 .fa-star-and-crescent:before {

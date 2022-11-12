@@ -212,7 +212,29 @@ Route::group(['middleware'=> ['auth']], function(){
             Route::group(['prefix'=> "{level}/courses" , 'as'=> 'courses.'], function(){
                 Route::get('{course}/content',[App\Http\Controllers\MaterialController::class, 'index'])->name('index');
                 Route::get('{course}/show',[App\Http\Controllers\MaterialController::class, 'show'])->name('show');
+                
+                Route::get('create',[App\Http\Controllers\CourseController::class, 'create'])->name('create');
+                Route::post('store',[App\Http\Controllers\CourseController::class, 'store'])->name('store');
+
+                Route::get('{course}/edit',[App\Http\Controllers\CourseController::class, 'edit'])->name('edit');
+                Route::put('{course}/update',[App\Http\Controllers\CourseController::class, 'update'])->name('update');
+
+                Route::delete('{course}/destroy',[App\Http\Controllers\CourseController::class, 'delete'])->name('destroy');
             });
+            Route::group(['prefix'=> "courses/{course}/materials" , 'as'=> 'courses.materials.'], function(){
+                Route::get('/',[App\Http\Controllers\MaterialController::class, 'alldata'])->name('all');
+
+                Route::get('/create',[App\Http\Controllers\MaterialController::class, 'create'])->name('create');
+                Route::post('/store',[App\Http\Controllers\MaterialController::class, 'store'])->name('store');
+
+                Route::get('/{material}/edit',[App\Http\Controllers\MaterialController::class, 'edit'])->name('edit');
+                Route::put('/{material}/update',[App\Http\Controllers\MaterialController::class, 'update'])->name('update');
+
+                Route::delete('/{material}/destroy',[App\Http\Controllers\MaterialController::class, 'destroy'])->name('destroy');
+
+
+            });
+
         });
     
         Route::group(['prefix'=> "posts" , 'as'=> 'posts.'], function(){

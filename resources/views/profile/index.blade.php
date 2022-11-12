@@ -41,9 +41,15 @@
                                 <li class="nav-item">
                                     <button class="nav-link active" data-toggle="tab" data-target="#myInfo" type="button">معلوماتي الشخصية</button>
                                 </li>
-                                <li class="nav-item">
-                                    <button class="nav-link" data-toggle="tab" data-target="#myServ" type="button">الدروس</button>
+                                @if ($user->role != 'admin')
+                                    <li class="nav-item">
+                                        <button class="nav-link" data-toggle="tab" data-target="#myServ" type="button">الدروس</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('library.courses.create', ['level'=> auth()->user()->level_id]) }}">اضافة درس</a>
                                 </li>
+                                @endif
+                               
                                 <li class="nav-item">
                                     <button class="nav-link" data-toggle="tab" data-target="#changePass" type="button">تغيير كلمة المرور</button>
                                 </li>
@@ -145,6 +151,23 @@
                                                         <li class="list-group-item d-flex justify-content-between">
                                                             <span>المستوي</span>
                                                             <span>{{ $item->level->title }}</span>
+                                                        </li>
+                                                        <li class="list-group-item d-flex justify-content-between">
+                                                            <span>التقييم</span>
+                                                            <div class="rate">
+                                                                @for ($i = $item->star; $i < 5; $i++)
+                                                                    <i class="fa fa-star-o"></i>
+                                                                @endfor
+                        
+                                                                @for ($i = 0; $i < $item->star; $i++)
+                                                                    <i class="fa fa-star"></i>
+                                                                @endfor                                       
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-group-item d-flex justify-content-between">
+                                                           <a style="width:100%;min-width: auto !important" class="btn btn-danger bg-danger text-white" onclick="deleteItem('{{ route('library.courses.destroy', ['level'=> $item->level_id, 'course'=> $item->id]) }}')"><i class="fa fa-trash"></i></a>
+                                                           <a style="width:100%;min-width: auto !important" class="btn btn-primary bg-primary" href="{{ route('library.courses.materials.all', ['course'=> $item->id]) }}"><i class="fa fa-list"></i></a>
+                                                           <a style="width:100%;min-width: auto !important" class="btn btn-success bg-success" href="{{ route('library.courses.edit', ['level'=> $item->level_id, 'course'=> $item->id]) }}"><i class="fa fa-edit"></i></a>
                                                         </li>
                                                    </ul>
                                                 </div>
@@ -248,4 +271,45 @@
         }
 
     </style>
+@endsection
+
+@section('script')
+    <script>
+        function deleteItem(url){
+            swal("هل تريد حذف العنصر ؟",{
+                "icon": "warning",
+                closeOnClickOutside: false,
+                closeOnEsc: false,
+                dangerMode: true,
+                buttons: {
+                    cancel: {
+                        text: "لا",
+                        value: null,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                      },
+                      confirm: {
+                        text: "نعم, احذف",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: true
+                      }
+                }
+                
+            }).then((result) => {
+                if (result) {
+                  $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {"_token": "{{ csrf_token() }}", "_method": "DELETE"},
+                        success: function(data,status,xhr){
+                            window.location.reload();
+                        }
+                  });
+                }
+            })
+        }
+    </script>
 @endsection

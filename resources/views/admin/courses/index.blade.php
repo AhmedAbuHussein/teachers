@@ -21,6 +21,8 @@
                         <th>#</th>
                         <th>الاسم</th>
                         <th>الكود</th>
+                        <th>المعلم</th>
+                        <th>التقييم</th>
                         <th>المستوي</th>
                         <th>الصورة</th>
                         <th>التحكم</th>
@@ -32,6 +34,12 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->code }}</td>
+                            <td>{{ optional($item->teacher)->fname }}</td>
+                            <td>
+                                @for ($i = 0; $i < $item->star; $i++)
+                                    <i class="ti ti-star"></i>
+                                @endfor
+                            </td>
                             <td>{{ optional($item->level)->title }}</td>
                             <td><img class="table-custom-image" src="{{ $item->avatar }}" alt=""></td>
                             <td>

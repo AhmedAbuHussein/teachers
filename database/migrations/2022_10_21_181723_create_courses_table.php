@@ -24,6 +24,7 @@ class CreateCoursesTable extends Migration
 
             $table->foreignId('level_id')->nullable()->constrained('levels')->cascadeOnDelete();
             $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->integer("star")->nullable();
 
             $table->timestamps();
         });

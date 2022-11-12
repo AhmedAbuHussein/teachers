@@ -1,26 +1,29 @@
-@extends('layouts.admin')
-
-@section('title')
-تعديل
+@extends('layouts.app')
+@section("title")
+      المواد
 @endsection
 @section('breadcrumb')
-<li class="breadcrumb-item"> 
-    <a href="{{ route('dashboard.materials.index') }}">االمواد</a> 
-</li>
-<li class="breadcrumb-item">تعديل</li>
+    <li> 
+        <a href="{{ route('profile.index') }}">الصفحة الشخصية</a>
+    </li>
+    <li> 
+        <a href="{{ route('library.courses.materials.all', ['course'=> $course]) }}">المواد</a>
+    </li>
+    <li> 
+        <span> المواد</span>
+    </li>
 @endsection
-
 @section('content')
-<div class="container-fluid">
 
+<main class="main-content my-4">
+    <div class="container">
         <div class="row">
-            <div class="col-md-6 mr-auto ml-auto">
-                <form action="{{ route('dashboard.materials.update', $material->id) }}" method="post" enctype="multipart/form-data">
+            <div class="col-md-8 mx-auto">
+                <form action="{{ route('library.courses.materials.store', ['course'=> $course]) }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="form-group">
                         <label for="title">العنوان</label>
-                        <input type="text" autofocus required name="title" id="title" value="{{ old('title', $material->title) }}" class="form-control" placeholder="العنوان">
+                        <input type="text" autofocus required name="title" id="title" value="{{ old('title') }}" class="form-control" placeholder="العنوان">
                         @error('title')
                             <p class="m-0 text-danger">{{ $message }}</p>
                         @enderror
@@ -28,36 +31,25 @@
                     <div class="form-group">
                         <label for="type">النوع</label>
                         <select required name="type" id="type" class="form-control">
-                            <option {{ old('type', $material->type) == 'text' ? 'selected': '' }} value="text">نص</option>
-                            <option {{ old('type', $material->type) == 'url' ? 'selected': '' }} value="url">لينك</option>
-                            <option {{ old('type', $material->type) == 'file' ? 'selected': '' }} value="file">ملف</option>
+                            <option {{ old('type') == 'text' ? 'selected': '' }} value="text">نص</option>
+                            <option {{ old('type') == 'url' ? 'selected': '' }} value="url">لينك</option>
+                            <option {{ old('type') == 'file' ? 'selected': '' }} value="file">ملف</option>
                         </select>
                         @error('type')
                             <p class="m-0 text-danger">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="course_id">المادة</label>
-                        <select required name="course_id" id="course_id" class="form-control">
-                            <option value="">اختار</option>
-                            @foreach ($courses as $course)
-                                <option {{ old('course_id', $material->course_id) ==  $course->id ? 'selected': '' }} value="{{ $course->id }}">{{ $course->title }} - {{ $course->level->title }}</option>
-                            @endforeach
-                        </select>
-                        @error('course_id')
-                            <p class="m-0 text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    
                     <div class="form-group" id="text">
                         <label for="src">المحتوي</label>
-                        <textarea name="text" id="src" rows="6" class="form-control">{{ old('text', $material->src) }}</textarea>
+                        <textarea name="text" id="src" rows="6" class="form-control">{{ old('text') }}</textarea>
                         @error('text')
                             <p class="m-0 text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group d-none" id="url">
                         <label for="src_url">لينك</label>
-                        <input type="url" id="src_url" value="{{ old('url', $material->src) }}" name="url" class="form-control">
+                        <input type="url" id="src_url" name="url" value="{{ old('url') }}" class="form-control">
                         @error('url')
                             <p class="m-0 text-danger">{{ $message }}</p>
                         @enderror
@@ -68,22 +60,20 @@
                         @error('src')
                             <p class="m-0 text-danger">{{ $message }}</p>
                         @enderror
+                    </div>
+                    
 
-                        @if ($material->type == 'file')
-                            <iframe src="{{ Storage::url($material->src) }}" frameborder="0" style="width:100%;min-height:300px ;max-height:350px;margin-top: 15px;"></iframe>
-                        @endif
-
-                    </div>                                       
-                    <div class="form-group d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-send"></i> حفظ</button>
+                    <div class="form-group d-flex justify-content-start">
+                        <button type="submit" class="btn btn-primary bg-primary"><i class="fa fa-send"></i> حفظ</button>
                     </div>
                 </form>
             </div>
         </div>
-
-</div>
+    </div>
+</main>
 @endsection
-@section('style')
+
+@section('styles')
     <style>
         .preview{
             width: 220px;

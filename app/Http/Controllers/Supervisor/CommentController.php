@@ -12,25 +12,31 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $items = Comment::with("post", 'user')->get();
+        $items = Comment::with("post", 'user')->whereHas('post', function($query){
+            $query->whereHas('user', function($builder){
+                $builder->where('level_id', auth()->user()->level_id);
+            });
+        })->get();
         return view('supervisor.comments.index', compact('items'));
     }
 
     public function create()
     {
-        $users = User::get();
-        $posts = Post::get();
-        return view('supervisor.comments.create', compact('users', 'posts'));
+        $user = auth()->user();
+        $posts = Post::whereHas("user", function($query) use($user){
+            $query->where('level_id', $user->level_id);
+        })->get();
+        return view('supervisor.comments.create', compact('posts'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             "text"=> 'required|string',
-            "user_id"=> 'required|numeric|exists:users,id',
             "post_id"=> 'required|numeric|exists:posts,id',
         ]);
         $data = $request->except(["_token", '_method']);
+        $data['user_id'] = auth()->id();
         Comment::create($data);
 
         return redirect()->route('supervisor.comments.index')->with([
@@ -41,8 +47,11 @@ class CommentController extends Controller
 
     public function edit(Comment $comment)
     {
-        $users = User::get();
-        $posts = Post::get();
+        $user = auth()->user();
+        $users = User::where("level_id", auth()->user()->level_id)->get();
+        $posts = Post::whereHas("user", function($query) use($user){
+            $query->where('level_id', $user->level_id);
+        })->get();
         return view('supervisor.comments.edit', compact('comment' ,'posts', 'users'));
     }
 
@@ -51,7 +60,6 @@ class CommentController extends Controller
        
         $request->validate([
             "text"=> 'required|string',
-            "user_id"=> 'required|numeric|exists:users,id',
             "post_id"=> 'required|numeric|exists:posts,id',
         ]);
         $data = $request->except(["_token", '_method']);

@@ -13,13 +13,21 @@ class MaterialController extends Controller
 {
     public function index()
     {
-        $items = Material::get();
+        $items = Material::whereHas("course", function($query){
+            $query->whereHas('user', function($builder){
+                $builder->whereHas('user', function($query) {
+                    $query->where("level_id", auth()->user()->level_id);
+                });
+            });
+        })->get();
         return view('supervisor.materials.index', compact('items'));
     }
 
     public function create()
     {
-        $courses = Course::get();
+        $courses = Course::whereHas('user', function($query) {
+            $query->where("level_id", auth()->user()->level_id);
+        })->get();
         return view('supervisor.materials.create', compact('courses'));
     }
 
@@ -56,7 +64,9 @@ class MaterialController extends Controller
 
     public function edit(Material $material)
     {
-        $courses = Course::get();
+        $courses = Course::whereHas('user', function($query) {
+            $query->where("level_id", auth()->user()->level_id);
+        })->get();
         return view('supervisor.materials.edit', compact('material', 'courses'));
     }
 

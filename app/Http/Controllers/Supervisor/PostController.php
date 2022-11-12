@@ -13,13 +13,16 @@ class PostController extends Controller
 {
     public function index()
     {
-        $items = Post::get();
+        $user = auth()->user();
+        $items = Post::whereHas("user", function($query) use($user){
+            $query->where('level_id', $user->level_id);
+        })->get();
         return view('supervisor.posts.index', compact('items'));
     }
 
     public function create()
     {
-        $users = User::get();
+        $users = User::where("level_id", auth()->user()->level_id)->get();
         return view('supervisor.posts.create', compact('users'));
     }
 
@@ -57,7 +60,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $users = User::get();
+        $users = User::where("level_id", auth()->user()->level_id)->get();
         return view('supervisor.posts.edit', compact('post', 'users'));
     }
 

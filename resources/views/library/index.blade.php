@@ -53,7 +53,16 @@
                         </div>
                         <div class="details">
                             <h3>{{ $item->title }}</h3>
+                            <div class="rate">
+                                @for ($i = 0; $i < $item->star; $i++)
+                                    <i class="fa fa-star"></i>
+                                @endfor                    
+                                @for ($i = $item->star; $i < 5; $i++)
+                                    <i class="fa fa-star-o"></i>
+                                @endfor                   
+                            </div>
                             <span class="badge badge-success">{{ $item->level->title }}</span>
+
                             <p>{{ $item->text }}</p>
                            <div class="d-flex justify-content-between gap-10">
                             <a href="{{ route('library.courses.show', ['level'=> $item->level_id,'course'=>$item->id]) }}" class="btn-shop">عرض</a>

@@ -25,6 +25,7 @@
                         <div class="title-single">
                             <h3>{{ $item->title }}</h3>
                         </div>
+                        <hr>
                         <div class="body-single">
                             {{ $item->text }}
                         </div>
@@ -50,7 +51,7 @@
     
                 <!-- Col -->
                 <div class="col-md-6">
-                    <div class="more-news">
+                    <div class="more-news text-left">
                         <a href="{{ route('news.index') }}">
                             عرض المزيد
                             <i class="la la-angle-left"></i>

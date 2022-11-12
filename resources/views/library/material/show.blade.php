@@ -22,6 +22,14 @@
                         <div class="col-md-8">
                            <div class="course pt-3">
                                 <h4>{{ $course->title }}</h4>
+                                <div class="rate">
+                                    @for ($i = 0; $i < $course->star; $i++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor                    
+                                    @for ($i = $course->star; $i < 5; $i++)
+                                        <i class="fa fa-star-o"></i>
+                                    @endfor                   
+                                </div>
                                 <span class="badge badge-success">{{ $course->level->title }}</span>
                                 <p class="my-1">كود الكورس : {{ $course->code }}</p>
                                 <p class="my-1">للحصول علي معلومات اكثر عن هذا البرنامج يمكنك الضغط <a href="{{ $course->extra_url }}">هنا</a></p>

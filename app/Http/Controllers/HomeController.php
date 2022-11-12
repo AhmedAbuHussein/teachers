@@ -7,7 +7,7 @@ use App\Models\Contact;
 use App\Models\Course;
 use App\Models\News;
 use App\Models\Privacy;
-use App\Models\Product;
+
 use App\Models\Setting;
 use Illuminate\Http\Request;
 

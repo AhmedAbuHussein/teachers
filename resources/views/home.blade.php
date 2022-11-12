@@ -91,6 +91,16 @@
                                         رقم الكورس {{ $course->code }}
                                         </span>
                                     </div>
+                                    <div class="rate">
+                                        @for ($i = $course->star; $i < 5; $i++)
+                                            <i class="fa fa-star-o"></i>
+                                        @endfor
+
+                                        @for ($i = 0; $i < $course->star; $i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor                                       
+                                    </div>
+                                     
                                     <a href="{{ route('library.courses.show', ['level'=> $course->level_id,'course'=>$course->id]) }}" class="btn-add-cart">
                                        عرض
                                     </a>

@@ -45,7 +45,7 @@
                         <i class="ti-menu ti-close"></i>
                     </a>
                     <div class="navbar-brand">
-                        <a href="{{ route('dashboard.index') }}" class="logo">
+                        <a href="{{ route('supervisor.index') }}" class="logo">
                             <b class="logo-icon">
  
                                 <img style="max-width:200px; " src="{{ url('images/logo.png') }}" alt="Bacura" class="light-logo" />

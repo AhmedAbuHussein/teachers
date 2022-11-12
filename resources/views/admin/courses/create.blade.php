@@ -15,7 +15,7 @@
     <form action="{{ route('dashboard.courses.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="title">العنوان</label>
                     <input type="text" required name="title" id="title" value="{{ old('title') }}" class="form-control" placeholder="العنوان">
@@ -24,7 +24,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="code">الكود</label>
                     <input type="text" required name="code" id="code" value="{{ old('code') }}" class="form-control" placeholder="الكود">
@@ -60,15 +60,31 @@
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="level_id">المستوي</label>
-                    <select required name="level_id" id="level_id" class="form-control">
-                        <option value="">اختار المستوي</option>
-                        @foreach ($levels as $item) 
-                        <option {{ old('level_id') == $item->id ? 'selected': '' }} value="{{ $item->id }}">{{ $item->title }}</option>
+                    <label for="user_id">المعلم</label>
+                    <select required name="user_id" id="user_id" class="form-control">
+                        <option value="">اختار المعلم</option>
+                        @foreach ($teachers as $item) 
+                        <option {{ old('user_id') == $item->id ? 'selected': '' }} value="{{ $item->id }}">{{ $item->fname . ' ' .$item->lname }}</option>
                         @endforeach
-
                     </select>
-                    @error('level_id')
+                    @error('user_id')
+                        <p class="m-0 text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="star">التقييم</label>
+                    <select required name="star" id="star" class="form-control">
+                        <option value="">اختار التقييم</option>
+                        <option {{ old('star') == '1' ? 'selected': '' }} value="1">1</option>
+                        <option {{ old('star') == '2' ? 'selected': '' }} value="2">2</option>
+                        <option {{ old('star') == '3' ? 'selected': '' }} value="3">3</option>
+                        <option {{ old('star') == '4' ? 'selected': '' }} value="4">4</option>
+                        <option {{ old('star') == '5' ? 'selected': '' }} value="5">5</option>
+                    </select>
+                    @error('star')
                         <p class="m-0 text-danger">{{ $message }}</p>
                     @enderror
                 </div>

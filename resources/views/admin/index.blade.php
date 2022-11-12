@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-body">
                     <a href="/" class="cart">
-                        <i class="ti ti-shopping-cart"></i>
+                        <i class="ti ti-list"></i>
                         <span class="home-cart">{{ $news }}</span>
                         <p class="home-cart-p">الاخبار</p>
                     </a>

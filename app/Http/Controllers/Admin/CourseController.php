@@ -7,6 +7,7 @@ use App\Models\Course;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
@@ -19,8 +20,8 @@ class CourseController extends Controller
 
     public function create()
     {
-        $levels = Level::get();
-        return view('admin.courses.create', compact('levels'));
+        $teachers = User::where('role', '<>', 'admin')->get();
+        return view('admin.courses.create', compact('teachers'));
     }
 
     public function store(Request $request)
@@ -29,12 +30,13 @@ class CourseController extends Controller
             "title"=> 'required|string',
             "code"=> 'required|string',
             "is_active"=> 'required|boolean',
-            "level_id"=> 'required|numeric',
+            "user_id"=> 'required|numeric',
             "extra_url"=> 'nullable|url', 
             "text"=> 'nullable|string',
             "image"=> "nullable|image",
         ]);
         $data = $request->except(["_token", '_method', 'image']);
+        $data['level_id'] = User::find($request->user_id)->level_id;
         if($request->hasFile('image')) {
             $name = "course_" . time(). "_". Str::random() . ".". $request->file('image')->getClientOriginalExtension();
             Storage::putFileAs("images/", $request->file('image'), $name);
@@ -50,8 +52,8 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
-        $levels = Level::get();
-        return view('admin.courses.edit', compact('course', 'levels'));
+        $teachers = User::where('role', '<>', 'admin')->get();
+        return view('admin.courses.edit', compact('course', 'teachers'));
     }
 
     public function update(Request $request, Course $course)
@@ -60,13 +62,14 @@ class CourseController extends Controller
             "title"=> 'required|string',
             "code"=> 'required|string',
             "is_active"=> 'required|boolean',
-            "level_id"=> 'required|numeric',
+            "user_id"=> 'required|numeric',
             "extra_url"=> 'nullable|url', 
             "text"=> 'nullable|string',
             "image"=> "nullable|image",
         ]);
         $data = $request->except(["_token", '_method', 'image']);
-
+        $data['level_id'] = User::find($request->user_id)->level_id;
+        
         if($request->hasFile('image')){
             $old = $course->image;
             if($old){

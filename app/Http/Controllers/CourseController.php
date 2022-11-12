@@ -1,76 +1,72 @@
 <?php
 
-namespace App\Http\Controllers\Supervisor;
+namespace App\Http\Controllers;
 
 use App\Models\Level;
 use App\Models\Course;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
-    public function index()
+
+    public function create($level)
     {
-        $items = Course::withCount("materials")->with('level')->get();
-        return view('supervisor.courses.index', compact('items'));
+        return view('library.courses.create', compact('level'));
     }
 
-    public function create()
-    {
-        $teachers = User::where("level_id", auth()->user()->level_id)->get();
-        return view('supervisor.courses.create', compact('teachers'));
-    }
-
-    public function store(Request $request)
+    public function store(Request $request, $level)
     {
         $request->validate([
             "title"=> 'required|string',
             "code"=> 'required|string',
-            "is_active"=> 'required|boolean',
-            "user_id"=> 'required|numeric',
             "extra_url"=> 'nullable|url', 
             "text"=> 'nullable|string',
-            "star"=> "nullable|numeric|min:1|max:5",
             "image"=> "nullable|image",
         ]);
         $data = $request->except(["_token", '_method', 'image']);
-        $data['level_id'] = User::find($request->user_id)->level_id;
-        if($request->hasFile('image')) {
+        $data['level_id'] = auth()->user()->level_id;
+        $data['user_id'] = auth()->id();
+        
+        if($request->hasFile('image')){
             $name = "course_" . time(). "_". Str::random() . ".". $request->file('image')->getClientOriginalExtension();
             Storage::putFileAs("images/", $request->file('image'), $name);
             $data['image'] = "images/$name";
         }
+
         Course::create($data);
 
-        return redirect()->route('supervisor.courses.index')->with([
+        return redirect()->route('profile.index')->with([
             "message"=> "تم اضافة العنصر بنجاح",
             'icon'=> "success",
         ]);
     }
 
-    public function edit(Course $course)
+    public function edit($level, Course $course)
     {
-        $teachers = User::where("level_id", auth()->user()->level_id)->get();
-        return view('supervisor.courses.edit', compact('course', 'teachers'));
+        if($course->user_id != auth()->id()){
+            return redirect()->route('profile.index')->with([
+                "message"=> "التعديل غير مصرح به",
+                "icon"=> "error",
+            ]);
+        }
+        return view('library.courses.edit', compact('course', 'level'));
     }
 
-    public function update(Request $request, Course $course)
+
+    public function update(Request $request, $level, Course $course)
     {
         $request->validate([
             "title"=> 'required|string',
             "code"=> 'required|string',
-            "is_active"=> 'required|boolean',
-            "user_id"=> 'required|numeric',
             "extra_url"=> 'nullable|url', 
             "text"=> 'nullable|string',
-            "star"=> "nullable|numeric|min:1|max:5",
             "image"=> "nullable|image",
         ]);
         $data = $request->except(["_token", '_method', 'image']);
-
+        $data['level_id'] = auth()->user()->level_id;
+        
         if($request->hasFile('image')){
             $old = $course->image;
             if($old){
@@ -80,21 +76,25 @@ class CourseController extends Controller
             Storage::putFileAs("images/", $request->file('image'), $name);
             $data['image'] = "images/$name";
         }
+
         $course->update($data);
 
-        return redirect()->route('supervisor.courses.index')->with([
+        return redirect()->route('profile.index')->with([
             "message"=> "تم تعديل العنصر بنجاح",
             'icon'=> "success",
         ]);
     }
 
-    public function destroy(Course $course)
+    public function delete($level,Course $course)
     {
+        if($course->user_id != auth()->id()){
+            return response()->json(['message'=> "خطا في رقم المعرف للدرس"], 400);
+        }
+        $old = $course->image;
+        if($old){
+            Storage::delete($old);
+        }
         $course->delete();
-        return redirect()->route('supervisor.courses.index')->with([
-            "message"=> "تم حذف العنصر بنجاح",
-            'icon'=> "success",
-        ]);
-
+        return response()->json(['done']);
     }
 }

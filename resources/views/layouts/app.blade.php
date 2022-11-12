@@ -55,9 +55,28 @@
             });
 
         })
-        
     </script>
     @endif
+
+    <script>
+        function readURL(input,$seleector) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+    
+                reader.onload = function(e) {
+                    $($seleector).attr('src', e.target.result);
+                }
+    
+                reader.readAsDataURL(input.files[0]);
+          }
+        }
+    
+        $("input[type='file']").change(function() {
+            var preview = $(this).siblings('label').children('img.preview');
+            readURL(this,preview);
+        });
+    </script>
 
 </body>
 </html>
