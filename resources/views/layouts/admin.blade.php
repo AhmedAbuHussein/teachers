@@ -95,7 +95,7 @@
                 @yield('content')
             </div>
             <footer class="footer text-center">
-                جميع الحقوق محفوظة لموقع [<a href="/">Teacher Guides</a>] &copy; {{ date('Y') }}
+                جميع الحقوق محفوظة لموقع [<a href="/">Teacher Strategies</a>] &copy; {{ date('Y') }}
             </footer>
         </div>
     </div>
