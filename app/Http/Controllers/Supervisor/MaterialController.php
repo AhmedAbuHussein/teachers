@@ -13,11 +13,9 @@ class MaterialController extends Controller
 {
     public function index()
     {
-        $items = Material::whereHas("course", function($query){
-            $query->whereHas('user', function($builder){
-                $builder->whereHas('user', function($query) {
-                    $query->where("level_id", auth()->user()->level_id);
-                });
+        $items = Material::whereHas("course", function($builder){
+            $builder->whereHas('user', function($query) {
+                $query->where("level_id", auth()->user()->level_id);
             });
         })->get();
         return view('supervisor.materials.index', compact('items'));
