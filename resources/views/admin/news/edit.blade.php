@@ -14,6 +14,7 @@
 <div class="container-fluid">
     <form action="{{ route('dashboard.news.update', ['news'=> $news->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row">
             <div class="col-md-8 mx-auto">
                 

@@ -4656,4 +4656,29 @@ button.btn.btn-form {
 }
 
 
+
+/* ============= 20. ScrollUp ============= */
+
+#scrollUp {
+    background: var(--main-color) none repeat scroll 0 0;
+    border-radius: 0px;
+    bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    color: #fff;
+    font-size: 28px;
+    height: 40px;
+    line-height: 35px;
+    position: fixed;
+    right: 15px;
+    text-align: center;
+    transition: all 0.3s ease 0s;
+    width: 40px;
+    z-index: 200;
+}
+
+#scrollUp:hover {
+    background: #000;
+}
+
+
 /* End Library-page */
