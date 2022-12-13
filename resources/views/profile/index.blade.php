@@ -45,8 +45,9 @@
                                     <li class="nav-item">
                                         <button class="nav-link" data-toggle="tab" data-target="#myServ" type="button">الدروس</button>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('library.courses.create', ['level'=> auth()->user()->level_id]) }}">اضافة درس</a>
+                                    @if ($user->level_id)
+                                    <li class="nav-item"> <a class="nav-link" href="{{ route('library.courses.create', ['level'=> $user->level_id]) }}">اضافة درس</a>
+                                    @endif
                                 </li>
                                 @endif
                                
